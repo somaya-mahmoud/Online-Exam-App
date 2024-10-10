@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam_app/core/theming/colors_manager.dart';
 
 class DefaultElevatedButton extends StatelessWidget {
@@ -15,8 +16,8 @@ class DefaultElevatedButton extends StatelessWidget {
         onPressed:onPressed,
         style: ElevatedButton.styleFrom(backgroundColor:isValidate?ColorsManager.blueBase:ColorsManager.black30,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(25)),
-          padding: const EdgeInsets.symmetric(vertical: 10),
+              borderRadius: BorderRadius.circular(25.r)),
+          padding:  EdgeInsets.symmetric(vertical: 10.h),
         ),
         child: Text(
           label,

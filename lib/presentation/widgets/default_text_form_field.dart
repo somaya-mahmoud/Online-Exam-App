@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../theming/colors_manager.dart';
+import '../../core/theming/colors_manager.dart';
+
 
 typedef Validator = String? Function(String?);
 
@@ -53,16 +54,16 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
           )
           :null,
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: BorderSide(width: 1.sp, color:  ColorsManager.gray)),
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: BorderSide(width: 2.sp, color: ColorsManager.gray)),
           focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: BorderSide(width: 2.sp,color: ColorsManager.error)),
           errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: BorderSide(width: 1.sp,color: ColorsManager.error)),
 
         ),

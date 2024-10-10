@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam_app/core/theming/theme_manager.dart';
 import 'package:online_exam_app/presentation/screens/login/login_screen.dart';
 
 class OnlineExamApp extends StatelessWidget {
@@ -12,16 +13,17 @@ class OnlineExamApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
-      child: MaterialApp(
+      builder:(context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Online Exam',
-        /*   theme: */
+        theme: ThemeManager.mainTheme,
         routes: {
           LoginScreen.routeName :(_) => const LoginScreen()
         },
         initialRoute:LoginScreen.routeName,
 
-      ),
+      ) ,
+
     );
   }
 }
