@@ -20,9 +20,9 @@ class OnlineExamApp extends StatelessWidget {
         title: 'Online Exam',
         theme: ThemeManager.mainTheme,
         routes: {
-          ResetPasswordScreen.routeName :(_) => const ResetPasswordScreen()
+          ForgetPasswordScreen.routeName :(_) => const ForgetPasswordScreen()
         },
-        initialRoute:ResetPasswordScreen.routeName,
+        initialRoute:ForgetPasswordScreen.routeName,
 
       ) ,
 
