@@ -55,7 +55,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   # add the generator to your dev_dependencies
   injectable_generator:
-  # add build runner if not already added
+# add build runner if not already added
   build_runner:
 
 # For information on the generic Dart part of this file, see the
