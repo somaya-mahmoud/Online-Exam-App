@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam_app/core/theming/theme_manager.dart';
-import 'package:online_exam_app/presentation/screens/login/login_screen.dart';
+import 'package:online_exam_app/presentation/screens/password/forget_password/forget_password_screen.dart';
+import 'package:online_exam_app/presentation/screens/password/reset_password/reset_password_screen.dart';
+import 'package:online_exam_app/presentation/screens/password/verify_email/verify_email_screen.dart';
 
 class OnlineExamApp extends StatelessWidget {
 
@@ -18,9 +20,9 @@ class OnlineExamApp extends StatelessWidget {
         title: 'Online Exam',
         theme: ThemeManager.mainTheme,
         routes: {
-          LoginScreen.routeName :(_) => const LoginScreen()
+          ResetPasswordScreen.routeName :(_) => const ResetPasswordScreen()
         },
-        initialRoute:LoginScreen.routeName,
+        initialRoute:ResetPasswordScreen.routeName,
 
       ) ,
 
