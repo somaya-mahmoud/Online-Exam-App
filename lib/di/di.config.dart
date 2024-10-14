@@ -19,15 +19,17 @@ import '../data/repository/password_repository/forget_password_repo_imp.dart'
 import '../data/repository/password_repository/reset_password_repo_impl.dart'
     as _i11;
 import '../data/repository/password_repository/verify_reset_code_repo_imp.dart'
-    as _i14;
+    as _i15;
 import '../domain/repository/forget_password_repo.dart' as _i6;
 import '../domain/repository/reset_password_repo.dart' as _i10;
-import '../domain/repository/verify_reset_code_repo.dart' as _i13;
+import '../domain/repository/verify_reset_code_repo.dart' as _i14;
 import '../domain/uses_cases/forget_password_use_case.dart' as _i8;
 import '../domain/uses_cases/reset_password_use_case.dart' as _i12;
-import '../domain/uses_cases/verify_code_use_case.dart' as _i15;
+import '../domain/uses_cases/verify_code_use_case.dart' as _i16;
 import '../presentation/view_models/forget_password_view_model.dart' as _i9;
-import 'di.dart' as _i16;
+import '../presentation/view_models/reset_password_view_model.dart' as _i13;
+import '../presentation/view_models/verify_email_view_model.dart' as _i17;
+import 'di.dart' as _i18;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -54,12 +56,16 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i11.ResetPasswordRepoImpl(gh<_i4.AuthOnlineDataSource>()));
     gh.factory<_i12.ResetPasswordUseCase>(
         () => _i12.ResetPasswordUseCase(gh<_i10.ResetPasswordRepo>()));
-    gh.factory<_i13.VerifyResetCodeRepository>(
-        () => _i14.VerifyResetCodeImpl(gh<_i4.AuthOnlineDataSource>()));
-    gh.factory<_i15.VerifyCodeUseCase>(
-        () => _i15.VerifyCodeUseCase(gh<_i13.VerifyResetCodeRepository>()));
+    gh.factory<_i13.ResetPasswordViewModel>(
+        () => _i13.ResetPasswordViewModel(gh<_i12.ResetPasswordUseCase>()));
+    gh.factory<_i14.VerifyResetCodeRepository>(
+        () => _i15.VerifyResetCodeImpl(gh<_i4.AuthOnlineDataSource>()));
+    gh.factory<_i16.VerifyCodeUseCase>(
+        () => _i16.VerifyCodeUseCase(gh<_i14.VerifyResetCodeRepository>()));
+    gh.factory<_i17.VerifyEmailViewModel>(
+        () => _i17.VerifyEmailViewModel(gh<_i16.VerifyCodeUseCase>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i16.RegisterModule {}
+class _$RegisterModule extends _i18.RegisterModule {}

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam_app/core/theming/colors_manager.dart';
+import 'package:online_exam_app/core/utils/dialog_utils.dart';
 import 'package:online_exam_app/di/di.dart';
+import 'package:online_exam_app/presentation/screens/password/verify_email/verify_email_screen.dart';
 import 'package:online_exam_app/presentation/view_models/forget_password_view_model.dart';
 import 'package:online_exam_app/presentation/widgets/default_elevated_button.dart';
 import 'package:online_exam_app/presentation/widgets/default_text_form_field.dart';
@@ -14,7 +16,6 @@ class ForgetPasswordWidget extends StatelessWidget {
   var formKey = GlobalKey<FormState>();
   ForgetPasswordViewModel forgetViewModel = getIt.get<
       ForgetPasswordViewModel>();
-
 
   @override
   Widget build(BuildContext context) {
@@ -42,21 +43,12 @@ class ForgetPasswordWidget extends StatelessWidget {
           ),
         ),
         body: BlocListener<ForgetPasswordViewModel, ForgetPasswordState>(
-          listenWhen:(previous,current){
-             return true;
-          },
           listener: (context, state) {
-           if(state is ForgetPasswordLoadingState){
-             showDialog(context: context, builder:(context){
-               return const AlertDialog(
-               content: Row(
-               children: [
-                 CircularProgressIndicator(),
-                 Text('Loading....'),
-             ],
-               ),
-               );
-             });
+           if(state is ForgetPasswordSuccessState){
+            DialogUtils.showLoading(context, 'OTP sent to your email');
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const VerifyEmailScreen(),));
+           }else if(state is ForgetPasswordErrorState){
+             DialogUtils.showLoading(context, 'Invalid Email');
            }
           },
           child: Form(
@@ -123,25 +115,9 @@ class ForgetPasswordWidget extends StatelessWidget {
                   child: DefaultElevatedButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          forgetViewModel.forgetPassword(emailController.text);
+                                forgetPassword(emailController.text);
                         }
                       }, label: 'Continue', isValidate: true),
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     if (formKey.currentState!.validate()) {}
-                  //   },
-                  //   style: ElevatedButton.styleFrom(
-                  //     backgroundColor: ColorsManager.blueBase,
-                  //   ),
-                  //   child: Text(
-                  //     'Continue',
-                  //     style: TextStyle(
-                  //       color: Colors.white,
-                  //       fontSize: 18.sp,
-                  //       fontWeight: FontWeight.w600,
-                  //     ),
-                  //   ),
-                  // ),
                 ),
               ],
             ),
@@ -149,5 +125,8 @@ class ForgetPasswordWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+  void forgetPassword(String email){
+   forgetViewModel.forgetPassword(email);
   }
 }

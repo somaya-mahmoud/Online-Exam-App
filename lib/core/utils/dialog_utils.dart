@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class DialogUtils {
   static void showLoading(BuildContext context, String message) {
     showDialog(
-      barrierDismissible: false,
+      barrierDismissible: true,
       context: context,
       builder: (context) {
         return AlertDialog(
           content: Row(
-              children: [CircularProgressIndicator(),
-                SizedBox(width: 12),
+              children: [const CircularProgressIndicator(),
+                const SizedBox(width: 12),
                 Text(message,)]),
         );
       },

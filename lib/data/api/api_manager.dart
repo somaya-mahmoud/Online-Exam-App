@@ -8,7 +8,7 @@ import 'package:online_exam_app/data/models/password_response/VerifyResetCodeRes
 class ApiManager {
   late Dio _dio;
 
-  void init(){
+   ApiManager(){
     _dio = Dio(
       BaseOptions(
         baseUrl: AppConstants.baseUrl,
