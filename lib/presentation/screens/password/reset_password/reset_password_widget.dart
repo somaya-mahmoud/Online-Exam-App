@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam_app/core/theming/colors_manager.dart';
-import 'package:online_exam_app/core/utils/dialog_utils.dart';
+import 'package:online_exam_app/presentation/widgets/error_dialog.dart';
+import 'package:online_exam_app/presentation/widgets/show_loading_dialog.dart';
+import 'package:online_exam_app/utils/utils.dart';
 import 'package:online_exam_app/di/di.dart';
-import 'package:online_exam_app/presentation/view_models/reset_password_view_model.dart';
+import 'package:online_exam_app/presentation/view_models/password_view_models/reset_password_view_model.dart';
 import 'package:online_exam_app/presentation/widgets/default_elevated_button.dart';
 import 'package:online_exam_app/presentation/widgets/default_text_form_field.dart';
 
-
 class ResetPasswordWidget extends StatelessWidget {
-
   var passwordController = TextEditingController();
   var formKey = GlobalKey<FormState>();
-  ResetPasswordViewModel resetViewModel = getIt.get<
-      ResetPasswordViewModel>();
+  ResetPasswordViewModel resetViewModel = getIt.get<ResetPasswordViewModel>();
   var rePasswordController = TextEditingController();
 
   ResetPasswordWidget({super.key});
@@ -25,6 +24,7 @@ class ResetPasswordWidget extends StatelessWidget {
       create: (context) => resetViewModel,
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Row(
             children: [
               Icon(
@@ -45,12 +45,22 @@ class ResetPasswordWidget extends StatelessWidget {
           ),
         ),
         body: BlocConsumer<ResetPasswordViewModel, ResetPasswordState>(
-          listener: (context, state) {
-            if(state is ResetPasswordSuccessState){
-              DialogUtils.showLoading(context, 'Password Reset Successfully');
-            }else if(state is ResetPasswordErrorState){
-              DialogUtils.showLoading(context, 'something went wrong');
+          listenWhen: (previous, current) {
+            if (current is ResetPasswordLoadingState ||
+                current is ResetPasswordErrorState ||
+                current is ResetPasswordSuccessState) {
+              return true;
             }
+            return false;
+          },
+          listener: (context, state) {
+            if (state is ResetPasswordLoadingState) {
+              showLoadingDialog(context);
+            } else if (state is ResetPasswordErrorState) {
+              var message = extractErrorMessage(state.exception);
+              Navigator.of(context).pop(); // Close loading dialog
+              showErrorDialog(context, message);
+            } else if (state is ResetPasswordSuccessState) {}
           },
           builder: (context, state) {
             return Form(
@@ -79,7 +89,7 @@ class ResetPasswordWidget extends StatelessWidget {
                           margin: EdgeInsets.all(20.sp),
                           child: Text(
                             'Password must not be empty and must contain '
-                                '6 characters with upper case letter \n              and one number at least ',
+                            '6 characters with upper case letter \n              and one number at least ',
                             style: TextStyle(
                               fontSize: 16.sp,
                               color: Colors.grey,
@@ -130,10 +140,17 @@ class ResetPasswordWidget extends StatelessWidget {
                     height: 48.h,
                     margin: EdgeInsets.only(left: 10.w, right: 10.w),
                     child:
-                    DefaultElevatedButton(
-                        onPressed: () {
-                          resetPassword(passwordController.text,rePasswordController.text);
-                        }, label: 'Continue', isValidate: true),
+                        BlocBuilder<ResetPasswordViewModel, ResetPasswordState>(
+                      builder: (context, state) {
+                        return DefaultElevatedButton(
+                            onPressed: () {
+                              resetPassword(passwordController.text,
+                                  rePasswordController.text);
+                            },
+                            label: 'Continue',
+                            isValidate: true);
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -143,7 +160,8 @@ class ResetPasswordWidget extends StatelessWidget {
       ),
     );
   }
-  void resetPassword(String email,String newPassword){
+
+  void resetPassword(String email, String newPassword) {
     resetViewModel.resetPassword(email, newPassword);
   }
 }

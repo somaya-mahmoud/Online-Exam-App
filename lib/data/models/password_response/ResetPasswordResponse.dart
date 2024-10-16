@@ -3,11 +3,12 @@
 
 class ResetPasswordResponse {
   ResetPasswordResponse({
-      String? message, 
-      String? token,}){
+    String? message,
+    String? token,
+  }) {
     _message = message;
     _token = token;
-}
+  }
 
   ResetPasswordResponse.fromJson(dynamic json) {
     _message = json['message'];
@@ -15,11 +16,14 @@ class ResetPasswordResponse {
   }
   String? _message;
   String? _token;
-ResetPasswordResponse copyWith({  String? message,
-  String? token,
-}) => ResetPasswordResponse(  message: message ?? _message,
-  token: token ?? _token,
-);
+  ResetPasswordResponse copyWith({
+    String? message,
+    String? token,
+  }) =>
+      ResetPasswordResponse(
+        message: message ?? _message,
+        token: token ?? _token,
+      );
   String? get message => _message;
   String? get token => _token;
 
@@ -29,5 +33,4 @@ ResetPasswordResponse copyWith({  String? message,
     map['token'] = _token;
     return map;
   }
-
 }

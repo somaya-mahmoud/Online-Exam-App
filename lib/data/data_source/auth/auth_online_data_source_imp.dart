@@ -5,6 +5,7 @@ import 'package:online_exam_app/data/contracts/auth/auth_online_datasource.dart'
 import 'package:online_exam_app/data/models/password_response/ForgotPasswordResponse.dart';
 import 'package:online_exam_app/data/models/password_response/ResetPasswordResponse.dart';
 import 'package:online_exam_app/data/models/password_response/VerifyResetCodeResponse.dart';
+import 'package:online_exam_app/data/models/profile_response/EditProfileResponse.dart';
 
 import 'package:online_exam_app/domain/common/ApiResult.dart';
 
@@ -31,6 +32,20 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
       String email, String newPassword) {
     return excuteApi<ResetPasswordResponse>(() async {
       return await apiManager.resetPassword(email, newPassword);
+    });
+  }
+
+  @override
+  Future<Result<EditProfileResponse>>? editProfile(
+      String userName,
+      String firstName,
+      String lastName,
+      String email,
+      String password,
+      String phone) {
+    return excuteApi<EditProfileResponse>(() async {
+      return await apiManager.editProfile(
+          userName, firstName, lastName, email, password, phone);
     });
   }
 }
