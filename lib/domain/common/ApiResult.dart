@@ -1,11 +1,11 @@
-sealed class Result<T> {}
+sealed class ApiResult<T> {}
 
-class Success<T> implements Result<T> {
-  T data;
-  Success(this.data);
+class Success<T> implements ApiResult<T> {
+  final T resultData;
+  Success(this.resultData);
 }
 
-class Fail<T> implements Result<T> {
-  Exception? exception;
-  Fail(this.exception);
+class Fail<T> implements ApiResult<T> {
+  final dynamic errorData;
+  Fail(this.errorData);
 }

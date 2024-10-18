@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:online_exam_app/core/theming/colors_manager.dart';
-import 'package:online_exam_app/presentation/widgets/default_elevated_button.dart';
-import 'package:online_exam_app/presentation/widgets/default_text_form_field.dart';
+import 'package:online_exam_app/presentation/resources/colors_manager.dart';
+import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
+
+import '../../../common/widgets/default_elevated_button.dart';
 
 
 class ResetPasswordWidget extends StatelessWidget {

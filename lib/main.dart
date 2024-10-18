@@ -1,16 +1,24 @@
-import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:online_exam_app/di/di.dart';
-import 'data/api/api_manager.dart';
-import 'online_exam_app.dart';
-
-void main() {
-   ApiManager();
+import 'package:online_exam_app/presentation/resources/language_manager.dart';
+import 'app/app.dart';
+late final WidgetsBinding engine;
+void main()async {
+  engine = WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
-
-
-  runApp(const OnlineExamApp());
+  await EasyLocalization.ensureInitialized();
+  runApp(
+    EasyLocalization(
+      supportedLocales: AppLanguages.locals,
+      path: AppLanguages.translationsPath,
+      fallbackLocale: AppLanguages.fallBackLocal,
+      startLocale: AppLanguages.startLocal,
+      useOnlyLangCode: true,
+      saveLocale: true,
+      child: const OnlineExamApp(),
+    ),
+  );
 }
-
 
 

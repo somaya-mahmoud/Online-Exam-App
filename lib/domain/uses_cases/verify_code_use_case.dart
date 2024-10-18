@@ -8,7 +8,7 @@ class VerifyCodeUseCase {
   VerifyResetCodeRepository verifyResetCodeRepository;
   VerifyCodeUseCase(this.verifyResetCodeRepository);
 
-  Future<Result<VerifyResetCodeResponse>>? invoke(String resetCode) {
+  Future<ApiResult<VerifyResetCodeResponse>>? invoke(String resetCode) {
     return verifyResetCodeRepository.verifyResetCode(resetCode);
   }
 }

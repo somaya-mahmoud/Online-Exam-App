@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:online_exam_app/core/theming/colors_manager.dart';
+import 'package:online_exam_app/presentation/resources/colors_manager.dart';
 
 class VerifyEmailWidget extends StatelessWidget {
   var formKey = GlobalKey<FormState>();
