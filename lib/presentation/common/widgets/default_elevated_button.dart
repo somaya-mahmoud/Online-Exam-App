@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam_app/presentation/resources/colors_manager.dart';
 
 class DefaultElevatedButton extends StatelessWidget {
-   DefaultElevatedButton({super.key, required this.onPressed, required this.label,required this.isValidate});
+   DefaultElevatedButton({super.key, required this.onPressed, required this.label, this.isValidate=true});
 
   final VoidCallback? onPressed;
   final String label;
-   bool isValidate=true;
+   bool isValidate;
 
 
   @override

@@ -14,18 +14,10 @@ import 'package:online_exam_app/presentation/resources/values_manager.dart';
 import '../../../di/di.dart';
 import '../../base/cubit_builder.dart';
 
-class RegisterView extends StatefulWidget {
+class RegisterView extends StatelessWidget {
   RegisterView({super.key});
-
-  @override
-  _RegisterViewState createState() => _RegisterViewState();
-}
-
-class _RegisterViewState extends State<RegisterView> {
   final RegisterViewModel viewModel = getIt<RegisterViewModel>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  bool isFormValid = false; // Variable to track form validation
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,7 +119,7 @@ class _RegisterViewState extends State<RegisterView> {
                         }
                       },
                       label: 'register',
-                      isValidate: isFormValid,
+
                     ),
                   ),
                 ],
@@ -137,27 +129,5 @@ class _RegisterViewState extends State<RegisterView> {
         ),
       ),
     );
-  }
-
-  void _validateForm() {
-    setState(() {
-      isFormValid = _formKey.currentState?.validate() ?? false;
-    });
-  }
-
-  void _submitForm() {
-    if (isFormValid) {
-      viewModel.register(
-        UserRequest(
-          username: viewModel.getUserNameController.text.trim(),
-          firstName: viewModel.getFirstNameController.text.trim(),
-          lastName: viewModel.getLastNameController.text.trim(),
-          email: viewModel.getEmailController.text.trim(),
-          phone: viewModel.getPhoneNumberController.text.trim(),
-          password: viewModel.getPasswordController.text.trim(),
-          rePassword: viewModel.getRePasswordController.text.trim(),
-        ),
-      );
-    }
   }
 }
