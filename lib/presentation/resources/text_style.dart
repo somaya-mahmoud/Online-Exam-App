@@ -74,6 +74,13 @@ class AppTextStyle {
         fontSize: FontSize.f22,
       );
 
+  static TextStyle smallSemiBoldHeadingTextStyle(BuildContext context) =>
+      getSemiBoldStyle(
+        fontFamily: AppLanguages.getPrimaryFont(context),
+        color: ColorsManager.blackBase,
+        fontSize: FontSize.f14,
+      );
+
   // Medium Text Styles
   static TextStyle mediumTextStyle(BuildContext context, {Color? color, double? fontSize}) =>
       getMediumStyle(
@@ -88,6 +95,11 @@ class AppTextStyle {
         color: ColorsManager.grey,
         fontSize: FontSize.f16,
       );
-
+  static TextStyle mediumSubtitleColorTextStyle(BuildContext context,Color color) =>
+      getMediumStyle(
+        fontFamily: AppLanguages.getPrimaryFont(context),
+        color: color,
+        fontSize: FontSize.f16,
+      );
 
 }

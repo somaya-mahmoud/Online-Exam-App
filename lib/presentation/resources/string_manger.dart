@@ -10,9 +10,9 @@ class AppStrings {
   static const userName = "userName";
   static const hintUserName = "hintUserName";
   static const firstName = "firstName";
-  static const hintFirstName = "hintFirstName";
   static const lastName = "lastName";
   static const hintLastName = "hintLastName";
+  static const hintFirstName = "hintFirstName";
   static const phone = "phone";
   static const hintPhone = "hintPhone";
   static const email = "email";
@@ -21,6 +21,12 @@ class AppStrings {
   static const hintPassword = "hintPassword";
   static const rePassword = "rePassword";
   static const hintRePassword = "hintRePassword";
+  static const register = "register";
+  static const haveAnAccount = "haveAnAccount";
+  static const login = "login";
+  static const forGetPassword = "forGetPassword";
+  static const donotHaveAnAccount = "donotHaveAnAccount";
+  static const rememberMe = "rememberMe";
 
   //#########################################################
   // validation
@@ -86,13 +92,5 @@ class AppStrings {
   static const String accept = "accept";
   static const String reject = "reject";
   static const String delete = "delete";
-  static const String update = "update";
-  static const String hrs = "hrs";
-  static const String addBusMessage = "addBusMessage";
-  static const String warningDepartureMessage = "warningDepartureMessage";
-  static const String showArrivalDateErrorMessage =
-      "showArrivalDateErrorMessage";
-  static const String ensureArrivalTime = "ensureArrivalTime";
-  static const String ensureDifferanceArrivalTime =
-      "ensureDifferanceArrivalTime";
+
 }

@@ -1,6 +1,6 @@
 enum DisplayType { fullScreen, popUpDialog }
 
-sealed class BaseState {
+abstract class BaseState {
   final DisplayType displayType;
   BaseState({this.displayType = DisplayType.fullScreen});
 }
