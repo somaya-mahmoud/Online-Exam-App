@@ -15,10 +15,12 @@ class VerifyEmailViewModel extends Cubit<VerifyEmailState> {
       case Success():
         {
           emit(VerifyEmailSuccessState());
+          print('result is : ${result.data}');
         }
       case Fail():
         {
           emit(VerifyEmailErrorState(result.exception));
+          print('resultError is : ${result.exception}');
         }
       case null:
     }

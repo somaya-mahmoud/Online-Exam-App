@@ -11,7 +11,7 @@ import 'package:online_exam_app/presentation/widgets/default_elevated_button.dar
 import 'package:online_exam_app/presentation/widgets/default_text_form_field.dart';
 
 class ResetPasswordWidget extends StatelessWidget {
-  var passwordController = TextEditingController();
+  var emailController = TextEditingController();
   var formKey = GlobalKey<FormState>();
   ResetPasswordViewModel resetViewModel = getIt.get<ResetPasswordViewModel>();
   var rePasswordController = TextEditingController();
@@ -107,10 +107,10 @@ class ResetPasswordWidget extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.all(10.sp),
                     child: DefaultTextFormField(
-                      controller: passwordController,
+                      controller: emailController,
                       label: 'New Password',
                       hintText: 'Enter your password',
-                      keyBoard: TextInputType.visiblePassword,
+                      keyBoard: TextInputType.emailAddress,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "This Password is not valid";
@@ -144,7 +144,7 @@ class ResetPasswordWidget extends StatelessWidget {
                       builder: (context, state) {
                         return DefaultElevatedButton(
                             onPressed: () {
-                              resetPassword(passwordController.text,
+                              resetPassword(emailController.text,
                                   rePasswordController.text);
                             },
                             label: 'Continue',

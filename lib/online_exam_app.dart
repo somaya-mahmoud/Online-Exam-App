@@ -20,8 +20,8 @@ class OnlineExamApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Online Exam',
         theme: ThemeManager.mainTheme,
-        routes: {ProfileScreen.routeName: (_) => const ProfileScreen()},
-        initialRoute: ProfileScreen.routeName,
+        routes: {ForgetPasswordScreen.routeName: (_) => const ForgetPasswordScreen()},
+        initialRoute: ForgetPasswordScreen.routeName,
       ),
     );
   }

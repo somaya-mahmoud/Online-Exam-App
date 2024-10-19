@@ -13,19 +13,28 @@ import 'package:online_exam_app/presentation/widgets/show_loading_dialog.dart';
 import 'package:online_exam_app/utils/utils.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
 
-class VerifyEmailWidget extends StatelessWidget {
-  var formKey = GlobalKey<FormState>();
-
+class VerifyEmailWidget extends StatefulWidget {
   VerifyEmailWidget({super.key});
 
-  var resetCode = TextEditingController();
+  @override
+  State<VerifyEmailWidget> createState() => _VerifyEmailWidgetState();
+}
+
+class _VerifyEmailWidgetState extends State<VerifyEmailWidget> {
+  var formKey = GlobalKey<FormState>();
+  late TextEditingController resetCode;
   VerifyEmailViewModel verifyViewModel = getIt.get<VerifyEmailViewModel>();
-  final TextEditingController pinCodeController1 = TextEditingController();
-  final TextEditingController pinCodeController2 = TextEditingController();
-  final TextEditingController pinCodeController3 = TextEditingController();
-  final TextEditingController pinCodeController4 = TextEditingController();
-  final TextEditingController pinCodeController5 = TextEditingController();
-  final TextEditingController pinCodeController6 = TextEditingController();
+
+  @override
+  void initState() {
+    resetCode = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    resetCode.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -117,9 +126,11 @@ class VerifyEmailWidget extends StatelessWidget {
                         maxLength: 6,
                         onTextChanged: (text) {},
                         onDone: (text) {
-                          print("DONE $text");
-                          print("DONE CONTROLLER ${resetCode.text}");
-                          verifyEmailCode(resetCode.text);
+                          if (text.length == 6) {
+                            verifyViewModel.verifyEmailCode(resetCode.text);
+                            print("DONE $text");
+                            print("DONE CONTROLLER ${resetCode.text}");
+                          }
                         },
                         pinBoxWidth: 70,
                         pinBoxHeight: 68,
@@ -200,16 +211,5 @@ class VerifyEmailWidget extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void verifyEmailCode(String resetCode) {
-    String n1 = pinCodeController1.text.toString();
-    String n2 = pinCodeController2.text.toString();
-    String n3 = pinCodeController3.text.toString();
-    String n4 = pinCodeController4.text.toString();
-    String n5 = pinCodeController5.text.toString();
-    String n6 = pinCodeController6.text.toString();
-    String resetCode = n1 + n2 + n3 + n4 + n5 + n6;
-    verifyViewModel.verifyEmailCode(resetCode);
   }
 }
