@@ -33,7 +33,13 @@ class RegisterView extends StatelessWidget {
         create: (context) => viewModel..start(),
         child: BlocConsumer<RegisterViewModel, BaseState>(
           listener: (context, state) {
+            if(state is SuccessState){
+              Future.delayed(Duration(seconds: 1),() {
+                Navigator.pushNamed(context, Routes.loginScreenRoute);
+              },);
+            }
             return baseListener(context, state);
+
           },
           builder: (context, state) {
             return baseBuilder(context, state, _buildRegisterForm(context));

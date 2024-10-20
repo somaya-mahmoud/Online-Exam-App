@@ -22,6 +22,7 @@ class OnlineExamApp extends StatelessWidget {
         initialRoute: Routes.registerScreenRoute,
         theme: ThemeManager.mainTheme,
         onGenerateRoute: RouteGenerator.getRoute,
+
       ) ,
 
     );

@@ -13,6 +13,7 @@ class Routes{
   static const String forgetPasswordScreenRoute = "/forgetPasswordScreen";
   static const String registerScreenRoute = "/registerScreen";
   static const String loginScreenRoute = "/loginScreen";
+  static const String mainLayOutScreenRoute = "/mainLayOutScreen";
 
 }
 
@@ -27,6 +28,7 @@ class RouteGenerator{
       case Routes.registerScreenRoute:
         return MaterialPageRoute(builder: (_) => RegisterView());
       case Routes.loginScreenRoute:
+
         return MaterialPageRoute(builder: (_) =>  LoginViewScreen());
 
       default:
