@@ -8,7 +8,7 @@ class ForgetPasswordUseCase {
   ForgetPasswordRepo forgetPasswordRepo;
   ForgetPasswordUseCase(this.forgetPasswordRepo);
 
-  Future<Result<ForgotPasswordResponse>>? invoke(String email) {
+  Future<ApiResult<ForgotPasswordResponse>>? invoke(String email) {
     return forgetPasswordRepo.forgetPassword(email);
   }
 }

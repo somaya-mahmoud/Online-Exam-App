@@ -11,7 +11,7 @@ class ForgetPasswordRepoImpl implements ForgetPasswordRepo {
   ForgetPasswordRepoImpl(this.onlineDataSource);
 
   @override
-  Future<Result<ForgotPasswordResponse>>? forgetPassword(String email) {
+  Future<ApiResult<ForgotPasswordResponse>>? forgetPassword(String email) {
     return onlineDataSource.forgetPassword(email);
   }
 }

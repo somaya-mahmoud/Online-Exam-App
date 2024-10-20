@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:online_exam_app/core/theming/colors_manager.dart';
+import 'package:online_exam_app/presentation/resources/colors_manager.dart';
 import 'package:online_exam_app/presentation/widgets/error_dialog.dart';
 import 'package:online_exam_app/presentation/widgets/show_loading_dialog.dart';
 import 'package:online_exam_app/utils/utils.dart';
 import 'package:online_exam_app/di/di.dart';
 import 'package:online_exam_app/presentation/view_models/password_view_models/reset_password_view_model.dart';
-import 'package:online_exam_app/presentation/widgets/default_elevated_button.dart';
-import 'package:online_exam_app/presentation/widgets/default_text_form_field.dart';
+import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
+
+import '../../../common/widgets/default_elevated_button.dart';
 
 class ResetPasswordWidget extends StatelessWidget {
   var emailController = TextEditingController();
