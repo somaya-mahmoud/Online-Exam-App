@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:online_exam_app/di/di.dart';
 import 'package:online_exam_app/presentation/resources/language_manager.dart';
 import 'app/app.dart';
+import 'data/api/abb_bloc_observer.dart';
+
 late final WidgetsBinding engine;
-void main()async {
+void main() async {
   engine = WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
+  Bloc.observer = MyBlocObserver();
+  runApp(const OnlineExamApp());
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(

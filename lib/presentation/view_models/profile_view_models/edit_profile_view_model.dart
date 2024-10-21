@@ -23,7 +23,7 @@ class EditProfileViewModel extends Cubit<EditProfileState> {
 
       case Fail<EditProfileResponse>():
         {
-          emit(EditProfileErrorState(result.exception));
+          emit(EditProfileErrorState(result.errorData));
         }
     }
   }

@@ -39,20 +39,6 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
   }
 
   @override
-  Future<Result<EditProfileResponse>>? editProfile(
-      String userName,
-      String firstName,
-      String lastName,
-      String email,
-      String password,
-      String phone) {
-    return excuteApi<EditProfileResponse>(() async {
-      return await apiManager.editProfile(
-          userName, firstName, lastName, email, password, phone);
-    });
-  }
-
-  @override
   Future<ApiResult<AuthResponse>> registerUser({required UserRequest userRequest}) {
     return executeApi<AuthResponse>(() async {
       return await apiManager.registerUser(userRequest: userRequest);
@@ -60,4 +46,18 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
   }
 
 
+
+  @override
+  Future<ApiResult<EditProfileResponse>>? editProfile(
+      String userName,
+      String firstName,
+      String lastName,
+      String email,
+      String password,
+      String phone) {
+    return executeApi<EditProfileResponse>(() async {
+      return await apiManager.editProfile(
+          userName, firstName, lastName, email, password, phone);
+    });
+  }
 }

@@ -1,9 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam_app/presentation/resources/theme_manager.dart';
-
 import '../presentation/resources/routes_manger.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class OnlineExamApp extends StatelessWidget {
 

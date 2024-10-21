@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/presentation/base/base_cubit.dart';
 import 'package:online_exam_app/presentation/base/base_states.dart';
-import 'package:online_exam_app/presentation/login/view_models/states.dart';
+import 'package:online_exam_app/presentation/screens/login/view_models/states.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @injectable

@@ -1,5 +1,6 @@
-import 'package:online_exam_app/data/api/requests.dart';
+<<<<<<<<< Temporary merge branch 1
 import 'package:online_exam_app/data/models/password_response/ForgotPasswordResponse.dart';
+import 'package:online_exam_app/data/api/requests.dart';
 import 'package:online_exam_app/data/models/password_response/ResetPasswordResponse.dart';
 import 'package:online_exam_app/data/models/password_response/VerifyResetCodeResponse.dart';
 import 'package:online_exam_app/data/models/profile_response/EditProfileResponse.dart';
@@ -11,7 +12,7 @@ abstract class AuthOnlineDataSource {
   Future<ApiResult<VerifyResetCodeResponse>>? verifyResetCode(String resetCode) {}
   Future<ApiResult<ResetPasswordResponse>>? resetPassword(
       String email, String newPassword) {}
-  Future<Result<EditProfileResponse>>? editProfile(
+  Future<ApiResult<EditProfileResponse>>? editProfile(
       String userName,
       String firstName,
       String lastName,

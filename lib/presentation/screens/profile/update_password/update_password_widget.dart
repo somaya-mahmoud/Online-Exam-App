@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:online_exam_app/core/theming/colors_manager.dart';
-import 'package:online_exam_app/presentation/widgets/default_elevated_button.dart';
-import 'package:online_exam_app/presentation/widgets/default_text_form_field.dart';
+import 'package:online_exam_app/presentation/common/widgets/default_elevated_button.dart';
+import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
+import 'package:online_exam_app/presentation/resources/color_manager.dart';
 
 class UpdatePasswordWidget extends StatelessWidget {
   UpdatePasswordWidget({super.key});
@@ -15,6 +15,7 @@ class UpdatePasswordWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Row(
           children: [
             Icon(

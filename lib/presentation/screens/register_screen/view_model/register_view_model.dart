@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/data/api/requests.dart';
+import 'package:online_exam_app/data/networking/error/error_handler.dart';
+import 'package:online_exam_app/data/response/response.dart';
+import 'package:online_exam_app/domain/common/ApiResult.dart';
 import 'package:online_exam_app/domain/uses_cases/register_user_use_case.dart';
 import 'package:online_exam_app/presentation/base/base_cubit.dart';
 import 'package:online_exam_app/presentation/base/base_states.dart';
-import '../../../data/api/requests.dart';
-import '../../../data/networking/error/error_handler.dart';
-import '../../../data/response/response.dart';
-import '../../../domain/common/ApiResult.dart';
+
 
 @injectable
 @injectable

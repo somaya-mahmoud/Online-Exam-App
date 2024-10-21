@@ -1,25 +1,23 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_exam_app/app/extensions.dart';
+import 'package:online_exam_app/di/di.dart';
 import 'package:online_exam_app/presentation/base/base_states.dart';
+import 'package:online_exam_app/presentation/base/cubit_builder.dart';
 import 'package:online_exam_app/presentation/base/cubit_listener.dart';
 import 'package:online_exam_app/presentation/common/widgets/default_elevated_button.dart';
-import 'package:online_exam_app/presentation/register_screen/view_model/register_view_model.dart';
 import 'package:online_exam_app/data/api/requests.dart';
 import 'package:online_exam_app/presentation/common/validator/validator.dart';
 import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
-import 'package:online_exam_app/presentation/resources/color_manager.dart';
 import 'package:online_exam_app/presentation/resources/color_manager.dart';
 import 'package:online_exam_app/presentation/resources/routes_manger.dart';
 import 'package:online_exam_app/presentation/resources/string_manger.dart';
 import 'package:online_exam_app/presentation/resources/text_style.dart';
 import 'package:online_exam_app/presentation/resources/values_manager.dart';
-import '../../../di/di.dart';
-import '../../base/cubit_builder.dart';
-import '../../common/widgets/main_app_bar.dart';
+import 'package:online_exam_app/presentation/screens/register_screen/view_model/register_view_model.dart';
+
 
 class RegisterView extends StatelessWidget {
   RegisterView({super.key});
@@ -34,7 +32,7 @@ class RegisterView extends StatelessWidget {
         child: BlocConsumer<RegisterViewModel, BaseState>(
           listener: (context, state) {
             if(state is SuccessState){
-              Future.delayed(Duration(seconds: 1),() {
+              Future.delayed(const Duration(seconds: 1),() {
                 Navigator.pushNamed(context, Routes.loginScreenRoute);
               },);
             }
@@ -91,14 +89,12 @@ class RegisterView extends StatelessWidget {
                 validator: AppValidators.validateEmail,
               ),
               DefaultTextFormField(
-                isObscure: true,
                 label: AppStrings.passWord.tr(),
                 hintText: AppStrings.hintPassword.tr(),
                 controller: viewModel.getPasswordController,
                 validator: AppValidators.validatePassword,
               ),
               DefaultTextFormField(
-                isObscure: true,
                 label: AppStrings.rePassword.tr(),
                 hintText: AppStrings.hintRePassword.tr(),
                 controller: viewModel.getRePasswordController,

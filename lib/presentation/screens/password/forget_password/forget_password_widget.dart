@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam_app/presentation/common/validator/validator.dart';
+import 'package:online_exam_app/presentation/common/widgets/default_elevated_button.dart';
+import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
+import 'package:online_exam_app/presentation/common/widgets/error_dialog.dart';
+import 'package:online_exam_app/presentation/common/widgets/show_loading_dialog.dart';
 import 'package:online_exam_app/presentation/resources/colors_manager.dart';
 import 'package:online_exam_app/di/di.dart';
-import 'package:online_exam_app/presentation/screens/password/verify_email/verify_email_screen.dart';
+import 'package:online_exam_app/presentation/resources/routes_manger.dart';
 import 'package:online_exam_app/presentation/view_models/password_view_models/forget_password_view_model.dart';
-import 'package:online_exam_app/presentation/widgets/default_elevated_button.dart';
-import 'package:online_exam_app/presentation/widgets/default_text_form_field.dart';
-import 'package:online_exam_app/presentation/widgets/error_dialog.dart';
-import 'package:online_exam_app/presentation/widgets/show_loading_dialog.dart';
 import 'package:online_exam_app/utils/utils.dart';
 import 'package:online_exam_app/presentation/view_models/forget_password_view_model.dart';
 import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
@@ -64,14 +65,11 @@ class ForgetPasswordWidget extends StatelessWidget {
             } else if (state is ForgetPasswordErrorState) {
               var message = extractErrorMessage(state.exception);
               Navigator.of(context).pop(); // Close loading dialog
-              showErrorDialog(context, message);
+                showErrorDialog(context, message);
             } else if (state is ForgetPasswordSuccessState) {
-              // Close dialogs before showing success
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const VerifyEmailScreen(),
-                  ));
+              Future.delayed(const Duration(seconds: 1),() {
+                Navigator.pushNamed(context, Routes.verifyEmailScreenRoute);
+              },);
             }
           },
           child: Form(
@@ -122,11 +120,7 @@ class ForgetPasswordWidget extends StatelessWidget {
                       label: 'Email',
                       hintText: 'Enter your email',
                       keyBoard: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "This Email is not valid";
-                        }
-                      }),
+                      validator: AppValidators.validateEmail),
                 ),
                 SizedBox(
                   height: 15.h,

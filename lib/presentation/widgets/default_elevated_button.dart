@@ -3,26 +3,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam_app/core/theming/colors_manager.dart';
 
 class DefaultElevatedButton extends StatelessWidget {
-  DefaultElevatedButton(
-      {super.key,
-      required this.onPressed,
-      required this.label,
-      required this.isValidate});
+   DefaultElevatedButton({super.key, required this.onPressed, required this.label,required this.isValidate});
 
   final VoidCallback onPressed;
   final String label;
-  bool isValidate = true;
+   bool isValidate=true;
+
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor:
-              isValidate ? ColorsManager.blueBase : ColorsManager.black30,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.r)),
-          padding: EdgeInsets.symmetric(vertical: 10.h),
+        onPressed:onPressed,
+        style: ElevatedButton.styleFrom(backgroundColor:isValidate?ColorsManager.blueBase:ColorsManager.black30,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25.r)),
+          padding:  EdgeInsets.symmetric(vertical: 10.h),
         ),
         child: Text(
           label,

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam_app/presentation/resources/colors_manager.dart';
 
 class DefaultElevatedButton extends StatelessWidget {
-  DefaultElevatedButton({
+  const DefaultElevatedButton({
     super.key,
     required this.onPressed,
     required this.label,

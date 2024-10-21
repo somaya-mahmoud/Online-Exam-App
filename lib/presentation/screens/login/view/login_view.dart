@@ -3,20 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_exam_app/app/extensions.dart';
-import 'package:online_exam_app/presentation/login/view_models/login_view_model.dart';
-
-import '../../../di/di.dart';
-import '../../base/base_states.dart';
-import '../../base/cubit_builder.dart';
-import '../../common/validator/validator.dart';
-import '../../common/widgets/default_elevated_button.dart';
-import '../../common/widgets/default_text_form_field.dart';
-import '../../common/widgets/main_app_bar.dart';
-import '../../resources/color_manager.dart';
-import '../../resources/string_manger.dart';
-import '../../resources/text_style.dart';
-import '../../resources/values_manager.dart';
-import '../view_models/states.dart';
+import 'package:online_exam_app/di/di.dart';
+import 'package:online_exam_app/presentation/base/base_states.dart';
+import 'package:online_exam_app/presentation/base/cubit_builder.dart';
+import 'package:online_exam_app/presentation/common/validator/validator.dart';
+import 'package:online_exam_app/presentation/common/widgets/default_elevated_button.dart';
+import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
+import 'package:online_exam_app/presentation/common/widgets/main_app_bar.dart';
+import 'package:online_exam_app/presentation/resources/color_manager.dart';
+import 'package:online_exam_app/presentation/resources/string_manger.dart';
+import 'package:online_exam_app/presentation/resources/text_style.dart';
+import 'package:online_exam_app/presentation/resources/values_manager.dart';
+import 'package:online_exam_app/presentation/screens/login/view_models/login_view_model.dart';
+import 'package:online_exam_app/presentation/screens/login/view_models/states.dart';
 
 class LoginViewScreen extends StatelessWidget {
   LoginViewScreen({super.key});
@@ -132,7 +131,7 @@ class LoginViewScreen extends StatelessWidget {
                   const Spacer(),
                   Text(
                     AppStrings.register.tr(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       color: ColorsManager.blueBase,
                       decoration: TextDecoration.underline,
