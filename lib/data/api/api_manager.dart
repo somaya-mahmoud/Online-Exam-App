@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/data/api/requests.dart';
 import 'package:online_exam_app/data/api/api_constants.dart';
 import 'package:online_exam_app/data/models/password_response/ForgotPasswordResponse.dart';
 import 'package:online_exam_app/data/models/password_response/ResetPasswordResponse.dart';
 import 'package:online_exam_app/data/models/password_response/VerifyResetCodeResponse.dart';
 import 'package:online_exam_app/data/models/profile_response/EditProfileResponse.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import '../response/response.dart';
 
 class ApiManager {
   late Dio _dio;
@@ -35,6 +35,23 @@ class ApiManager {
     var response = await _dio.put(AppConstants.resetPasswordApi,
         data: {'email': email, 'newPassword': newPassword});
     return ResetPasswordResponse.fromJson(response.data);
+  }
+
+
+  Future<AuthResponse> registerUser({required UserRequest userRequest}) async {
+    Response<Map<String, dynamic>> response = await _dio.post(
+      '${AppConstants.baseUrl}${AppConstants.signUpApi}',
+      data: {
+        "username": userRequest.username,
+        "firstName": userRequest.firstName,
+        "lastName": userRequest.lastName,
+        "email": userRequest.email,
+        "password": userRequest.password,
+        "rePassword": userRequest.rePassword,
+        "phone": userRequest.phone,
+      },
+    );
+    return AuthResponse.fromJson(response.data ?? {});
   }
 
   Future<EditProfileResponse> editProfile(String userName, String firstName,

@@ -7,7 +7,7 @@ import 'package:online_exam_app/domain/repository/profile/edit_profile_repo.dart
 class EditProfileUseCase {
   EditProfileRepo editProfileRepo;
   EditProfileUseCase(this.editProfileRepo);
-  Future<Result<EditProfileResponse>>? invoke(String userName, String firstName,
+  Future<ApiResult<EditProfileResponse>>? invoke(String userName, String firstName,
       String lastName, String email, String password, String phone) {
     return editProfileRepo.editProfile(
         userName, firstName, lastName, email, password, phone);

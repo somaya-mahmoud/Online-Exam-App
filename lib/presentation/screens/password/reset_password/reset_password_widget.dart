@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:online_exam_app/core/theming/colors_manager.dart';
-import 'package:online_exam_app/presentation/widgets/error_dialog.dart';
-import 'package:online_exam_app/presentation/widgets/show_loading_dialog.dart';
+import 'package:online_exam_app/presentation/common/validator/validator.dart';
+import 'package:online_exam_app/presentation/common/widgets/default_elevated_button.dart';
+import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
+import 'package:online_exam_app/presentation/common/widgets/error_dialog.dart';
+import 'package:online_exam_app/presentation/common/widgets/show_loading_dialog.dart';
+import 'package:online_exam_app/presentation/resources/colors_manager.dart';
 import 'package:online_exam_app/utils/utils.dart';
 import 'package:online_exam_app/di/di.dart';
 import 'package:online_exam_app/presentation/view_models/password_view_models/reset_password_view_model.dart';
-import 'package:online_exam_app/presentation/widgets/default_elevated_button.dart';
-import 'package:online_exam_app/presentation/widgets/default_text_form_field.dart';
 
 class ResetPasswordWidget extends StatelessWidget {
   var emailController = TextEditingController();
@@ -60,7 +61,9 @@ class ResetPasswordWidget extends StatelessWidget {
               var message = extractErrorMessage(state.exception);
               Navigator.of(context).pop(); // Close loading dialog
               showErrorDialog(context, message);
-            } else if (state is ResetPasswordSuccessState) {}
+            } else if (state is ResetPasswordSuccessState) {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Password Updated Successfully')));
+            }
           },
           builder: (context, state) {
             return Form(
@@ -111,11 +114,7 @@ class ResetPasswordWidget extends StatelessWidget {
                       label: 'New Password',
                       hintText: 'Enter your password',
                       keyBoard: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "This Password is not valid";
-                        }
-                      },
+                      validator:AppValidators.validatePassword,
                     ),
                   ),
                   Container(
@@ -125,10 +124,8 @@ class ResetPasswordWidget extends StatelessWidget {
                       label: 'Confirm Password',
                       hintText: 'Confirm password',
                       keyBoard: TextInputType.visiblePassword,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "This password does not match new password";
-                        }
+                      validator:(value){
+                        AppValidators.validateConfirmPassword(value, rePasswordController.text);
                       },
                     ),
                   ),

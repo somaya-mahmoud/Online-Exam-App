@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:online_exam_app/core/theming/colors_manager.dart';
 import 'package:online_exam_app/di/di.dart';
+import 'package:online_exam_app/presentation/common/validator/validator.dart';
+import 'package:online_exam_app/presentation/common/widgets/default_elevated_button.dart';
+import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
+import 'package:online_exam_app/presentation/resources/color_manager.dart';
+import 'package:online_exam_app/presentation/resources/routes_manger.dart';
 import 'package:online_exam_app/presentation/screens/profile/update_password/update_password_screen.dart';
 import 'package:online_exam_app/presentation/view_models/profile_view_models/edit_profile_view_model.dart';
-import 'package:online_exam_app/presentation/widgets/default_elevated_button.dart';
-import 'package:online_exam_app/presentation/widgets/default_text_form_field.dart';
 
 class ProfileWidget extends StatefulWidget {
   ProfileWidget({super.key});
@@ -93,11 +95,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         label: 'User name',
                         hintText: 'Somaya mahmoud',
                         keyBoard: TextInputType.name,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Required";
-                          }
-                        }),
+                        validator: AppValidators.validateUsername,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -152,8 +151,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         keyBoard: TextInputType.visiblePassword,
                         textButton: TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(
-                                  context, UpdatePasswordScreen.routeName);
+                              Navigator.pushNamed(context, Routes.updatePasswordScreenRoute);
                             },
                             child: Text(
                               'Change',

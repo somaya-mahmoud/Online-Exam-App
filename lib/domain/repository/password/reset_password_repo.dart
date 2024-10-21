@@ -2,6 +2,6 @@ import 'package:online_exam_app/data/models/password_response/ResetPasswordRespo
 import 'package:online_exam_app/domain/common/ApiResult.dart';
 
 abstract class ResetPasswordRepo {
-  Future<Result<ResetPasswordResponse>>? resetPassword(
+  Future<ApiResult<ResetPasswordResponse>>? resetPassword(
       String email, String newPassword) {}
 }

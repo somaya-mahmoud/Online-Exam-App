@@ -3,7 +3,6 @@ import 'package:online_exam_app/presentation/screens/profile/profile/profile_wid
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
-  static const String routeName = 'profile_screen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

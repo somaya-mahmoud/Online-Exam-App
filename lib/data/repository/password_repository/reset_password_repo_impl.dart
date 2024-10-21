@@ -9,7 +9,7 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
   AuthOnlineDataSource onlineDataSource;
   ResetPasswordRepoImpl(this.onlineDataSource);
   @override
-  Future<Result<ResetPasswordResponse>>? resetPassword(
+  Future<ApiResult<ResetPasswordResponse>>? resetPassword(
       String email, String newPassword) {
     onlineDataSource.resetPassword(email, newPassword);
   }

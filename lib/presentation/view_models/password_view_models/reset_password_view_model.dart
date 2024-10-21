@@ -22,7 +22,7 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordState> {
 
       case Fail<ResetPasswordResponse>():
         {
-          emit(ResetPasswordErrorState(result.exception));
+          emit(ResetPasswordErrorState(result.errorData));
         }
     }
   }

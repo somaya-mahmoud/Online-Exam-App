@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:online_exam_app/core/theming/colors_manager.dart';
+import 'package:online_exam_app/presentation/common/widgets/error_dialog.dart';
+import 'package:online_exam_app/presentation/common/widgets/show_loading_dialog.dart';
+import 'package:online_exam_app/presentation/resources/colors_manager.dart';
 import 'package:online_exam_app/di/di.dart';
+import 'package:online_exam_app/presentation/resources/routes_manger.dart';
 import 'package:online_exam_app/presentation/screens/password/forget_password/forget_password_screen.dart';
 import 'package:online_exam_app/presentation/screens/password/reset_password/reset_password_screen.dart';
 import 'package:online_exam_app/presentation/view_models/password_view_models/verify_email_view_model.dart';
-import 'package:online_exam_app/presentation/widgets/error_dialog.dart';
-import 'package:online_exam_app/presentation/widgets/show_loading_dialog.dart';
 import 'package:online_exam_app/utils/utils.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
 
@@ -78,9 +78,9 @@ class _VerifyEmailWidgetState extends State<VerifyEmailWidget> {
               Navigator.of(context).pop();
               showErrorDialog(context, message);
             } else if (state is VerifyEmailSuccessState) {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const ResetPasswordScreen(),
-              ));
+              Future.delayed(const Duration(seconds: 1),() {
+                Navigator.pushNamed(context, Routes.resetPasswordScreenRoute);
+              },);
             }
           },
           child: Form(

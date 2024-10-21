@@ -9,7 +9,7 @@ class VerifyResetCodeImpl implements VerifyResetCodeRepository {
   AuthOnlineDataSource onlineDataSource;
   VerifyResetCodeImpl(this.onlineDataSource);
   @override
-  Future<Result<VerifyResetCodeResponse>>? verifyResetCode(String resetCode) {
+  Future<ApiResult<VerifyResetCodeResponse>>? verifyResetCode(String resetCode) {
     return onlineDataSource.verifyResetCode(resetCode);
   }
 }

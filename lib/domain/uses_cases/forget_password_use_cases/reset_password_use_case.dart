@@ -9,7 +9,7 @@ class ResetPasswordUseCase {
 
   ResetPasswordUseCase(this.resetPasswordRepo);
 
-  Future<Result<ResetPasswordResponse>>? invoke(
+  Future<ApiResult<ResetPasswordResponse>>? invoke(
       String email, String newPassword) {
     return resetPasswordRepo.resetPassword(email, newPassword);
   }

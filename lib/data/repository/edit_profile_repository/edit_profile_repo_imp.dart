@@ -9,7 +9,7 @@ class EditProfileRepoImp implements EditProfileRepo {
   AuthOnlineDataSource authOnlineDataSource;
   EditProfileRepoImp(this.authOnlineDataSource);
   @override
-  Future<Result<EditProfileResponse>>? editProfile(
+  Future<ApiResult<EditProfileResponse>>? editProfile(
       String userName,
       String firstName,
       String lastName,
