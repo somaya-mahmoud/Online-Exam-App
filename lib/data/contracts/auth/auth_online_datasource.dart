@@ -1,11 +1,13 @@
-<<<<<<<<< Temporary merge branch 1
-import 'package:online_exam_app/data/models/password_response/ForgotPasswordResponse.dart';
-import 'package:online_exam_app/data/api/requests.dart';
-import 'package:online_exam_app/data/models/password_response/ResetPasswordResponse.dart';
-import 'package:online_exam_app/data/models/password_response/VerifyResetCodeResponse.dart';
-import 'package:online_exam_app/data/models/profile_response/EditProfileResponse.dart';
-import 'package:online_exam_app/data/response/response.dart';
-import 'package:online_exam_app/domain/common/ApiResult.dart';
+
+
+import '../../../domain/common/ApiResult.dart';
+import '../../network/requests.dart';
+import '../../models/login_response/LoginResponse.dart';
+import '../../models/password_response/ForgotPasswordResponse.dart';
+import '../../models/password_response/ResetPasswordResponse.dart';
+import '../../models/password_response/VerifyResetCodeResponse.dart';
+import '../../models/profile_response/EditProfileResponse.dart';
+import '../../response/response.dart';
 
 abstract class AuthOnlineDataSource {
   Future<ApiResult<ForgotPasswordResponse>>? forgetPassword(String email) {}
@@ -21,4 +23,8 @@ abstract class AuthOnlineDataSource {
       String phone) {}
 
   Future<ApiResult<AuthResponse>> registerUser({required UserRequest userRequest});
+
+  Future<ApiResult<LoginResponse>> loginUser({required String email,required String password});
+
+
 }

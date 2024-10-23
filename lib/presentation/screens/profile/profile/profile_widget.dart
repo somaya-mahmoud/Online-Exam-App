@@ -149,18 +149,18 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         label: 'password',
                         hintText: '**********',
                         keyBoard: TextInputType.visiblePassword,
-                        textButton: TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, Routes.updatePasswordScreenRoute);
-                            },
-                            child: Text(
-                              'Change',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: ColorsManager.blueBase,
-                                fontSize: 15.sp,
-                              ),
-                            )),
+                        // textButton: TextButton(
+                        //     onPressed: () {
+                        //       Navigator.pushNamed(context, Routes.updatePasswordScreenRoute);
+                        //     },
+                        //     child: Text(
+                        //       'Change',
+                        //       style: TextStyle(
+                        //         fontWeight: FontWeight.w500,
+                        //         color: ColorsManager.blueBase,
+                        //         fontSize: 15.sp,
+                        //       ),
+                        //     )),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Required";

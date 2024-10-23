@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'base_states.dart';
 
 abstract class BaseCubit extends Cubit<BaseState> {
@@ -8,7 +9,14 @@ abstract class BaseCubit extends Cubit<BaseState> {
 
   void emitLoading() => emit(LoadingState());
 
-  void emitError(String message) => emit(ErrorState(message));
+  void emitError({
+    required String errorMessage,
+
+  }) => emit(ErrorState(
+    errorMessage,
+
+  ));
+
 
   void emitSuccess(String message) => emit(SuccessState(message));
 }

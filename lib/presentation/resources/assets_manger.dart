@@ -9,13 +9,16 @@ class IconsAssets {
   IconsAssets._();
 
   static const String _basePath = "assets/icons/";
-// static const String awards = "${_basePath}Awards Icon.svg";
+// static const String awards = "${_basePath}Awards result.svg";
 }
 
 class SVGAssets {
   SVGAssets._();
 
   static const String _basePath = "assets/svg/";
+  static const String explore = "${_basePath}Explore.svg";
+  static const String result = "${_basePath}result.svg";
+  static const String profile = "${_basePath}prpfile.svg";
 
 
 }

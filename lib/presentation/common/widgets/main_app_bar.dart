@@ -42,7 +42,7 @@ AppBar buildMainAppBar({
     //     : null,
 
     leading:  Padding(
-      padding: const EdgeInsets.only(left: 8.0),
+      padding: const EdgeInsets.all( 8.0),
       child:GestureDetector(
           onTap: () {
             Navigator.pop(context);

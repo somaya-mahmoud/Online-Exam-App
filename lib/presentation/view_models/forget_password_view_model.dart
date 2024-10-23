@@ -2,7 +2,8 @@
 import 'package:injectable/injectable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/domain/common/ApiResult.dart';
-import 'package:online_exam_app/domain/uses_cases/forget_password_use_case.dart';
+
+import '../../domain/uses_cases/forget_password_use_cases/forget_password_use_case.dart';
 @injectable
 class ForgetPasswordViewModel extends Cubit<ForgetPasswordState>{
   ForgetPasswordUseCase forgetPasswordUseCase;
@@ -18,7 +19,7 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordState>{
         emit(ForgetPasswordSuccessState());
       }
       case Fail():{
-        emit(ForgetPasswordErrorState(result.exception));
+        emit(ForgetPasswordErrorState(result.errorData));
       }
       case null:
     }

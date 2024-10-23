@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/data/api/requests.dart';
-import 'package:online_exam_app/data/networking/error/error_handler.dart';
+import 'package:online_exam_app/data/network/requests.dart';
+import 'package:online_exam_app/presentation/resources/error_handler.dart';
 import 'package:online_exam_app/data/response/response.dart';
 import 'package:online_exam_app/domain/common/ApiResult.dart';
-import 'package:online_exam_app/domain/uses_cases/register_user_use_case.dart';
+import 'package:online_exam_app/domain/uses_cases/authentication_use_case/register_user_use_case.dart';
 import 'package:online_exam_app/presentation/base/base_cubit.dart';
 import 'package:online_exam_app/presentation/base/base_states.dart';
 
-
-@injectable
 @injectable
 class RegisterViewModel extends BaseCubit
     implements RegisterViewModelInput, RegisterViewModelOutput {
@@ -17,7 +15,6 @@ class RegisterViewModel extends BaseCubit
 
   RegisterViewModel(this._registerUserUseCase);
 
-  // Define controllers
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _firstNameController = TextEditingController();
@@ -40,7 +37,7 @@ class RegisterViewModel extends BaseCubit
         resetState();
       });
     } else if (result is Fail<AuthResponse>) {
-      final errorModel = ErrorHandler.handle(result.errorData as Exception);
+      final errorModel = ErrorHandler.handle(result.errorData);
       emit(ErrorState(errorModel.message ?? "An error occurred , try again"));
     } else {
       emit(ErrorState("Unexpected error occurred!!!"));

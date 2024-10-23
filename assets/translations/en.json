@@ -58,7 +58,7 @@
   "emailAlreadyExists": "Account Already Exists",
   "loginFailed": "Incorrect Email or Password",
   "cacheError": "Cache Error",
-  "noInternetError": "No Internet Error",
+  "noInternetError": "No Internet Connection",
   "emptyContent": "Empty Content",
   "intentError": "Intent Error",
   "tokenExpiredError": "Session Timeout\nplease login again",

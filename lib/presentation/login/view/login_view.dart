@@ -1,8 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_exam_app/app/extensions.dart';
+import 'package:online_exam_app/app/functions.dart';
 import 'package:online_exam_app/di/di.dart';
 import 'package:online_exam_app/presentation/base/base_states.dart';
 import 'package:online_exam_app/presentation/base/cubit_builder.dart';
@@ -11,12 +14,12 @@ import 'package:online_exam_app/presentation/common/widgets/default_elevated_but
 import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
 import 'package:online_exam_app/presentation/common/widgets/main_app_bar.dart';
 import 'package:online_exam_app/presentation/resources/color_manager.dart';
+import 'package:online_exam_app/presentation/resources/routes_manger.dart';
 import 'package:online_exam_app/presentation/resources/string_manger.dart';
 import 'package:online_exam_app/presentation/resources/text_style.dart';
 import 'package:online_exam_app/presentation/resources/values_manager.dart';
-import 'package:online_exam_app/presentation/screens/login/view_models/login_view_model.dart';
-import 'package:online_exam_app/presentation/screens/login/view_models/states.dart';
-
+import '../view_models/login_view_model.dart';
+import '../view_models/states.dart';
 class LoginViewScreen extends StatelessWidget {
   LoginViewScreen({super.key});
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -36,7 +39,10 @@ class LoginViewScreen extends StatelessWidget {
           listener: (context, state) {
             if (state is SuccessState) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
+              Navigator.pushNamed(context, Routes.mainLayOutScreenRoute);
             }
+            if (state is ErrorState) {
+     }
           },
           builder: (context, state) {
             return baseBuilder(context, state, _buildLoginForm(context, state));
@@ -59,9 +65,11 @@ class LoginViewScreen extends StatelessWidget {
                 label: AppStrings.email.tr(),
                 hintText: AppStrings.hintEmail.tr(),
                 controller: viewModel.getEmailController,
+                keyBoard: TextInputType.emailAddress,
                 validator: AppValidators.validateEmail,
               ),
               DefaultTextFormField(
+                isObscure: true,
                 label: AppStrings.passWord.tr(),
                 hintText: AppStrings.hintPassword.tr(),
                 controller: viewModel.getPasswordController,
@@ -89,16 +97,22 @@ class LoginViewScreen extends StatelessWidget {
                   ),
                   Text(AppStrings.rememberMe.tr(), style: AppTextStyle.smallSemiBoldHeadingTextStyle(context)),
                   const Spacer(),
-                  Text(
-                    AppStrings.forGetPassword.tr(),
-                    style: GoogleFonts.inter(
-                        textStyle: const TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: AppSize.s12,
-                          color: ColorsManager.blackBase,
-                          decoration: TextDecoration.underline,
-                          decorationColor: ColorsManager.blueBase,
-                        )
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, Routes.forgetPasswordScreenRoute);
+                    },
+                    child: Text(
+                      AppStrings.forGetPassword.tr(),
+                      style: GoogleFonts.inter(
+                          textStyle: const TextStyle(
+                            fontWeight: FontWeight.w400,
+
+                            fontSize: AppSize.s12,
+                            color: ColorsManager.blueBase,
+                            decoration: TextDecoration.underline,
+                            decorationColor: ColorsManager.blueBase,
+                          )
+                      ),
                     ),
                   ),
                 ],
@@ -112,8 +126,14 @@ class LoginViewScreen extends StatelessWidget {
                 child: DefaultElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      viewModel.login();
+                      logWarning(viewModel.getEmailController.text);
+                      logWarning(viewModel.getPasswordController.text);
+                      viewModel.login(
+                        email: viewModel.getEmailController.text,
+                        password: viewModel.getPasswordController.text,
+                      );
                     }
+
                   },
                   label: AppStrings.login.tr(),
                 ),
@@ -129,13 +149,18 @@ class LoginViewScreen extends StatelessWidget {
                     style: AppTextStyle.mediumSubtitleColorTextStyle(context, ColorsManager.blackBase),
                   ),
                   const Spacer(),
-                  Text(
-                    AppStrings.register.tr(),
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: ColorsManager.blueBase,
-                      decoration: TextDecoration.underline,
-                      decorationColor: ColorsManager.blueBase,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, Routes.registerScreenRoute);
+                    },
+                    child: Text(
+                      AppStrings.register.tr(),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        color: ColorsManager.blueBase,
+                        decoration: TextDecoration.underline,
+                        decorationColor: ColorsManager.blueBase,
+                      ),
                     ),
                   ),
                   const Spacer(flex: 4),

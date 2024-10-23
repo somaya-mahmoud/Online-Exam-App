@@ -20,8 +20,8 @@ class DefaultElevatedButton extends StatelessWidget {
       onPressed: isValidate ? onPressed : null, // Disable onPressed when not valid
       style: ElevatedButton.styleFrom(
         backgroundColor: isValidate
-            ? ColorsManager.blueBase // Active color when form is valid
-            : ColorsManager.black30, // Disabled color when form is invalid
+            ? ColorsManager.blueBase
+            : ColorsManager.black30,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25.r),
         ),

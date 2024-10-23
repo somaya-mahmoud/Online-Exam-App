@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum DisplayType { fullScreen, popUpDialog }
 
 abstract class BaseState {
@@ -15,5 +17,11 @@ class SuccessState extends BaseState {
 }
 class ErrorState extends BaseState {
   final String errorMessage;
-  ErrorState(this.errorMessage);
+
+
+  ErrorState(
+      this.errorMessage,
+   ) ;
 }
+
+class ContentState extends BaseState {}

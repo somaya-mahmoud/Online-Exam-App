@@ -1,13 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/presentation/main_lay_out_screen/view/main_lay_out_vew.dart';
 import 'package:online_exam_app/presentation/resources/string_manger.dart';
-import 'package:online_exam_app/presentation/screens/login/view/login_view.dart';
 import 'package:online_exam_app/presentation/screens/password/forget_password/forget_password_screen.dart';
 import 'package:online_exam_app/presentation/screens/password/reset_password/reset_password_screen.dart';
 import 'package:online_exam_app/presentation/screens/password/verify_email/verify_email_screen.dart';
 import 'package:online_exam_app/presentation/screens/profile/profile/profile_screen.dart';
 import 'package:online_exam_app/presentation/screens/profile/update_password/update_password_screen.dart';
-import 'package:online_exam_app/presentation/screens/register_screen/view/register_view.dart';
+
+import '../login/view/login_view.dart';
+import '../register_screen/view/register_view.dart';
 
 class Routes {
   Routes._();
@@ -40,6 +42,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
        case Routes.updatePasswordScreenRoute:
         return MaterialPageRoute(builder: (_) => const UpdatePasswordScreen());
+      case Routes.mainLayOutScreenRoute:
+        return MaterialPageRoute(builder: (_) => const MainLayOut());
          case Routes.profileScreenRoute:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
 

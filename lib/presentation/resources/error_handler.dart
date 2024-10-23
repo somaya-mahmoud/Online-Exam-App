@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'ErrorModel.dart';
+import '../../data/models/error_model/ErrorModel.dart';
 
 class ErrorHandler {
   static ErrorModel handle(Exception error) {

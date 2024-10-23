@@ -8,7 +8,7 @@ import 'package:online_exam_app/presentation/base/base_states.dart';
 import 'package:online_exam_app/presentation/base/cubit_builder.dart';
 import 'package:online_exam_app/presentation/base/cubit_listener.dart';
 import 'package:online_exam_app/presentation/common/widgets/default_elevated_button.dart';
-import 'package:online_exam_app/data/api/requests.dart';
+import 'package:online_exam_app/data/network/requests.dart';
 import 'package:online_exam_app/presentation/common/validator/validator.dart';
 import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
 import 'package:online_exam_app/presentation/resources/color_manager.dart';
@@ -16,7 +16,8 @@ import 'package:online_exam_app/presentation/resources/routes_manger.dart';
 import 'package:online_exam_app/presentation/resources/string_manger.dart';
 import 'package:online_exam_app/presentation/resources/text_style.dart';
 import 'package:online_exam_app/presentation/resources/values_manager.dart';
-import 'package:online_exam_app/presentation/screens/register_screen/view_model/register_view_model.dart';
+
+import '../view_model/register_view_model.dart';
 
 
 class RegisterView extends StatelessWidget {
@@ -32,9 +33,11 @@ class RegisterView extends StatelessWidget {
         child: BlocConsumer<RegisterViewModel, BaseState>(
           listener: (context, state) {
             if(state is SuccessState){
-              Future.delayed(const Duration(seconds: 1),() {
-                Navigator.pushNamed(context, Routes.loginScreenRoute);
-              },);
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                Routes.mainLayOutScreenRoute,
+                ModalRoute.withName('/'),
+              );
             }
             return baseListener(context, state);
 
@@ -61,6 +64,8 @@ class RegisterView extends StatelessWidget {
                 hintText: AppStrings.hintUserName.tr(),
                 controller: viewModel.getUserNameController,
                 validator: AppValidators.validateUsername,
+                keyBoard: TextInputType.name,
+
               ),
               Row(
                 children: [
@@ -70,6 +75,8 @@ class RegisterView extends StatelessWidget {
                       hintText: AppStrings.hintFirstName.tr(),
                       controller: viewModel.getFirstNameController,
                       validator: AppValidators.validateTextEmpty,
+                      keyBoard: TextInputType.name,
+
                     ),
                   ),
                   Expanded(
@@ -78,6 +85,8 @@ class RegisterView extends StatelessWidget {
                       hintText: AppStrings.hintLastName.tr(),
                       controller: viewModel.getLastNameController,
                       validator: AppValidators.validateTextEmpty,
+                      keyBoard: TextInputType.name,
+
                     ),
                   ),
                 ],
@@ -87,17 +96,23 @@ class RegisterView extends StatelessWidget {
                 hintText: AppStrings.hintEmail.tr(),
                 controller: viewModel.getEmailController,
                 validator: AppValidators.validateEmail,
+                keyBoard: TextInputType.emailAddress,
+
               ),
               DefaultTextFormField(
                 label: AppStrings.passWord.tr(),
                 hintText: AppStrings.hintPassword.tr(),
                 controller: viewModel.getPasswordController,
                 validator: AppValidators.validatePassword,
+                isObscure: true,
+
               ),
               DefaultTextFormField(
                 label: AppStrings.rePassword.tr(),
                 hintText: AppStrings.hintRePassword.tr(),
                 controller: viewModel.getRePasswordController,
+                isObscure: true,
+
                 validator: (val) => AppValidators.validateConfirmPassword(
                   val,
                   viewModel.getPasswordController.text,
@@ -108,6 +123,8 @@ class RegisterView extends StatelessWidget {
                 hintText: AppStrings.hintPhone.tr(),
                 controller: viewModel.getPhoneNumberController,
                 validator: AppValidators.validatePhoneNumber,
+                keyBoard: TextInputType.phone,
+
               ),
               const SizedBox(height: AppSize.s20),
               SizedBox(

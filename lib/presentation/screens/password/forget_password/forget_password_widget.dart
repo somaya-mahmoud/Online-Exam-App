@@ -4,17 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam_app/presentation/common/validator/validator.dart';
 import 'package:online_exam_app/presentation/common/widgets/default_elevated_button.dart';
 import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
-import 'package:online_exam_app/presentation/common/widgets/error_dialog.dart';
-import 'package:online_exam_app/presentation/common/widgets/show_loading_dialog.dart';
 import 'package:online_exam_app/presentation/resources/colors_manager.dart';
 import 'package:online_exam_app/di/di.dart';
+
 import 'package:online_exam_app/presentation/resources/routes_manger.dart';
 import 'package:online_exam_app/presentation/view_models/password_view_models/forget_password_view_model.dart';
 import 'package:online_exam_app/utils/utils.dart';
-import 'package:online_exam_app/presentation/view_models/forget_password_view_model.dart';
-import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
 
-import '../../../common/widgets/default_elevated_button.dart';
 
 class ForgetPasswordWidget extends StatelessWidget {
   ForgetPasswordWidget({super.key});
@@ -61,11 +57,11 @@ class ForgetPasswordWidget extends StatelessWidget {
           },
           listener: (context, state) {
             if (state is ForgetPasswordLoadingState) {
-              showLoadingDialog(context);
+              // showLoadingDialog(context);
             } else if (state is ForgetPasswordErrorState) {
               var message = extractErrorMessage(state.exception);
               Navigator.of(context).pop(); // Close loading dialog
-                showErrorDialog(context, message);
+                // showErrorDialog(context, message);
             } else if (state is ForgetPasswordSuccessState) {
               Future.delayed(const Duration(seconds: 1),() {
                 Navigator.pushNamed(context, Routes.verifyEmailScreenRoute);

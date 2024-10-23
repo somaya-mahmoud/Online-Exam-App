@@ -1,21 +1,52 @@
 import 'package:dio/dio.dart';
-import 'package:online_exam_app/data/api/requests.dart';
+import 'package:flutter/foundation.dart';
+import 'package:online_exam_app/app/constants.dart';
+import 'package:online_exam_app/data/network/requests.dart';
 import 'package:online_exam_app/data/api/api_constants.dart';
 import 'package:online_exam_app/data/models/password_response/ForgotPasswordResponse.dart';
 import 'package:online_exam_app/data/models/password_response/ResetPasswordResponse.dart';
 import 'package:online_exam_app/data/models/password_response/VerifyResetCodeResponse.dart';
 import 'package:online_exam_app/data/models/profile_response/EditProfileResponse.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import '../models/login_response/LoginResponse.dart';
 import '../response/response.dart';
 
 class ApiManager {
   late Dio _dio;
 
   ApiManager() {
-    _dio = Dio(
-      BaseOptions(
-        baseUrl: AppConstants.baseUrl,
-      ),
+    _initializeDio();
+  }
+
+  Future<void> _initializeDio() async {
+    _dio = await getDio();
+  }
+
+  Future<Dio> getDio() async {
+    Dio dio = Dio();
+    Map<String, String> headers = {
+      'Accept': 'application/json',
+    };
+
+    dio.options = BaseOptions(
+      baseUrl: Constants.baseUrl,
+      headers: headers,
+      responseType: ResponseType.json,
+      receiveTimeout: const Duration(milliseconds: Constants.apiTimeOut),
+      sendTimeout: const Duration(milliseconds: Constants.apiTimeOut),
     );
+
+    if (!kReleaseMode) {
+      dio.interceptors.add(
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseHeader: true,
+        ),
+      );
+    }
+
+    return dio;
   }
 
   Future<ForgotPasswordResponse> forgetPassword(String email) async {
@@ -52,6 +83,20 @@ class ApiManager {
       },
     );
     return AuthResponse.fromJson(response.data ?? {});
+  }
+
+  Future<LoginResponse> login({
+    required String email,
+    required String password,
+  }) async {
+    Response<Map<String, dynamic>> response = await _dio.post(
+      '${AppConstants.baseUrl}${AppConstants.signInApi}',
+      data: {
+        "email":email,
+        "password": password,
+      },
+    );
+    return LoginResponse.fromJson(response.data ?? {});
   }
 
   Future<EditProfileResponse> editProfile(String userName, String firstName,

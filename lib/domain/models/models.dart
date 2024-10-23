@@ -1,4 +1,6 @@
 class User {
+   String? token;
+
   String? username;
   String? firstName;
   String? lastName;
@@ -7,7 +9,10 @@ class User {
   String? rePassword;
   String? phone;
 
-  User({
+  User(
+
+      {
+    this.token ='',
     required this.username,
     required this.firstName,
     required this.lastName,
