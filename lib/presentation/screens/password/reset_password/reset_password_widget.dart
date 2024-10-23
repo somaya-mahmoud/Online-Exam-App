@@ -57,12 +57,14 @@ class ResetPasswordWidget extends StatelessWidget {
           listener: (context, state) {
             if (state is ResetPasswordLoadingState) {
               showLoadingDialog(context);
+              Navigator.pop(context);
             } else if (state is ResetPasswordErrorState) {
               var message = extractErrorMessage(state.exception);
-              Navigator.of(context).pop(); // Close loading dialog
+              Navigator.of(context).pop();
               showErrorDialog(context, message);
             } else if (state is ResetPasswordSuccessState) {
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Password Updated Successfully')));
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text('Password Updated Successfully')));
             }
           },
           builder: (context, state) {
@@ -114,7 +116,7 @@ class ResetPasswordWidget extends StatelessWidget {
                       label: 'New Password',
                       hintText: 'Enter your password',
                       keyBoard: TextInputType.emailAddress,
-                      validator:AppValidators.validatePassword,
+                      validator: AppValidators.validatePassword,
                     ),
                   ),
                   Container(
@@ -124,8 +126,9 @@ class ResetPasswordWidget extends StatelessWidget {
                       label: 'Confirm Password',
                       hintText: 'Confirm password',
                       keyBoard: TextInputType.visiblePassword,
-                      validator:(value){
-                        AppValidators.validateConfirmPassword(value, rePasswordController.text);
+                      validator: (value) {
+                        AppValidators.validateConfirmPassword(
+                            value, rePasswordController.text);
                       },
                     ),
                   ),

@@ -36,6 +36,8 @@ class RegisterViewModel extends BaseCubit
       Future.delayed(const Duration(seconds: 1), () {
         resetState();
       });
+
+      emit(ContentState());
     } else if (result is Fail<AuthResponse>) {
       final errorModel = ErrorHandler.handle(result.errorData);
       emit(ErrorState(errorModel.message ?? "An error occurred , try again"));
@@ -65,6 +67,7 @@ class RegisterViewModel extends BaseCubit
 
   @override
   void start() {}
+
 }
 
 abstract class RegisterViewModelInput {

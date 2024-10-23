@@ -30,6 +30,7 @@ class ApiManager {
 
     dio.options = BaseOptions(
       baseUrl: Constants.baseUrl,
+
       headers: headers,
       responseType: ResponseType.json,
       receiveTimeout: const Duration(milliseconds: Constants.apiTimeOut),
@@ -51,19 +52,20 @@ class ApiManager {
 
   Future<ForgotPasswordResponse> forgetPassword(String email) async {
     var response =
-        await _dio.post(AppConstants.forgetPasswordApi, data: {'email': email});
+        await _dio.post('${AppConstants.baseUrl}${AppConstants.forgetPasswordApi}',
+            data: {'email': email});
     return ForgotPasswordResponse.fromJson(response.data);
   }
 
   Future<VerifyResetCodeResponse> verifyResetCode(String resetCode) async {
     var response = await _dio
-        .post(AppConstants.verifyResetCodeApi, data: {'resetCode': resetCode});
+        .post('${AppConstants.baseUrl}${AppConstants.verifyResetCodeApi}', data: {'resetCode': resetCode});
     return VerifyResetCodeResponse.fromJson(response.data);
   }
 
   Future<ResetPasswordResponse> resetPassword(
       String email, String newPassword) async {
-    var response = await _dio.put(AppConstants.resetPasswordApi,
+    var response = await _dio.put('${AppConstants.baseUrl}${AppConstants.resetPasswordApi}',
         data: {'email': email, 'newPassword': newPassword});
     return ResetPasswordResponse.fromJson(response.data);
   }
