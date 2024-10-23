@@ -13,26 +13,28 @@ import '../../services/user_manager.dart';
 class RepositoryImpl implements AuthenticationRepository {
   final AuthOnlineDataSource onlineDataSource;
 
-  final AppCacheDataSource _cacheDataSource;
-  final UserManager _userManager;
+  // final AppCacheDataSource _cacheDataSource;
+  // final UserManager _userManager;
   RepositoryImpl(
-      this.onlineDataSource, this._cacheDataSource, this._userManager);
+      this.onlineDataSource,
+      // this._cacheDataSource, this._userManager
+
+      );
 
   @override
   Future<ApiResult<AuthResponse>> registerUser(
       {required UserRequest userRequest})async {
-    var user = onlineDataSource.registerUser(userRequest: userRequest);
-    _userManager.setCurrentUser = user as User;
-    await _cacheDataSource.saveToken();
-    return user;
+    return onlineDataSource.registerUser(userRequest: userRequest);
+    // _userManager.setCurrentUser = user as User;
+    // await _cacheDataSource.saveToken();
   }
 
   @override
   Future<ApiResult<LoginResponse>> loginUser(
       {required String email, required String password})async {
-    var user = onlineDataSource.loginUser(email: email, password: password);
-    _userManager.setCurrentUser = user as User;
-    await _cacheDataSource.saveToken();
-    return user;
+    return onlineDataSource.loginUser(email: email, password: password);
+    // _userManager.setCurrentUser = user as User;
+    // await _cacheDataSource.saveToken();
+    // return user;
   }
 }
