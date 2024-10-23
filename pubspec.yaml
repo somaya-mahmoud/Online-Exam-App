@@ -37,12 +37,20 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  dio: ^5.7.0
-  flutter_screenutil: ^5.9.3
-  flutter_svg: ^2.0.10+1
-  flutter_bloc: ^8.1.6
-  pin_code_text_field: ^1.8.0
+  cupertino_icons:
+  dio:
+  logger:
+  pretty_dio_logger: ^1.4.0
+  flutter_screenutil:
+  flutter_svg:
+  flutter_bloc:
+  pin_code_text_field:
+  image_picker:
+  shared_preferences:
+  easy_localization:
+  lottie:
+  google_fonts:
+  internet_connection_checker_plus:
 
 dev_dependencies:
   flutter_test:
@@ -53,11 +61,12 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints:
   # add the generator to your dev_dependencies
   injectable_generator:
 # add build runner if not already added
   build_runner:
+  json_serializable:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -72,7 +81,46 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/svg/
+    - assets/images/
+    - assets/translations/
+    - assets/svg/
+    - assets/lotties/
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/english/inter/Inter_24pt-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/english/inter/Inter_24pt-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/english/inter/Inter_24pt-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/english/inter/Inter_28pt-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/english/inter/Inter_28pt-Light.ttf
+          weight: 300
+
+
+    - family: NotoSansArabic
+      fonts:
+        - asset: assets/fonts/arabic/noto_sans_arabic/NotoSansArabic-Black.ttf
+          weight: 900
+        - asset: assets/fonts/arabic/noto_sans_arabic/NotoSansArabic-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/arabic/noto_sans_arabic/NotoSansArabic-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/arabic/noto_sans_arabic/NotoSansArabic-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/arabic/noto_sans_arabic/NotoSansArabic-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/arabic/noto_sans_arabic/NotoSansArabic-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/arabic/noto_sans_arabic/NotoSansArabic-Light.ttf
+          weight: 300
+        - asset: assets/fonts/arabic/noto_sans_arabic/NotoSansArabic-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/arabic/noto_sans_arabic/NotoSansArabic-Thin.ttf
+          weight: 100
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

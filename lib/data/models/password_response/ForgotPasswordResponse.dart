@@ -3,11 +3,12 @@
 
 class ForgotPasswordResponse {
   ForgotPasswordResponse({
-      String? message, 
-      String? info,}){
+    String? message,
+    String? info,
+  }) {
     _message = message;
     _info = info;
-}
+  }
 
   ForgotPasswordResponse.fromJson(dynamic json) {
     _message = json['message'];
@@ -15,11 +16,14 @@ class ForgotPasswordResponse {
   }
   String? _message;
   String? _info;
-ForgotPasswordResponse copyWith({  String? message,
-  String? info,
-}) => ForgotPasswordResponse(  message: message ?? _message,
-  info: info ?? _info,
-);
+  ForgotPasswordResponse copyWith({
+    String? message,
+    String? info,
+  }) =>
+      ForgotPasswordResponse(
+        message: message ?? _message,
+        info: info ?? _info,
+      );
   String? get message => _message;
   String? get info => _info;
 
@@ -29,5 +33,4 @@ ForgotPasswordResponse copyWith({  String? message,
     map['info'] = _info;
     return map;
   }
-
 }
