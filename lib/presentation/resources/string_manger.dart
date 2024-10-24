@@ -27,6 +27,42 @@ class AppStrings {
   static const forGetPassword = "forGetPassword";
   static const donotHaveAnAccount = "donotHaveAnAccount";
   static const rememberMe = "rememberMe";
+  //#########################################################
+//dialogTimeOut
+  static const timeOut = "Time out !!";
+  static const viewScore = "View score";
+
+  //#########################################################
+  // exam screen
+  static const exam = "Exam";
+  static const time = "30.00";
+  static const questionNumber = "Question 1 of 20";
+  static const questionSelect = "Select the correctly punctuated\n sentence.";
+  static const questionOne = "Its going to rain today.";
+  static const back = "Back";
+  static const next = "Next";
+//#########################################################
+  // explore screen
+  static const survey = "Survey";
+  static const search = "Search";
+  static const browseBySubject = "Browse by subject";
+  static const languageSvg = "Language";
+//#########################################################
+  // start xam screen
+  static const instructions = "Instructions";
+  static const defaultStatement = "Lorem ipsum dolor sit amet consectetur.";
+
+//#########################################################
+  // score screen
+  static const examScore = "Exam score";
+  static const yourScore = "Your score";
+  static const correct = "Correct";
+  static const inCorrect = "Incorrect";
+  static const percentage = "80%";
+  static const correctQuestions = "18";
+  static const inCorrectQuestions = "2";
+  static const showResults = "Show results";
+  static const startAgain = "Start again";
 
   //#########################################################
   // validation

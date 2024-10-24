@@ -14,4 +14,5 @@ class ColorsManager{
   static const Color white =Color(0xffF9F9F9);
   static const Color placeHolder =Color(0xffA6A6A6);
   static const Color transparent =Colors.transparent;
+  static const Color black10 =Color(0xffCFCFCF);
 }
