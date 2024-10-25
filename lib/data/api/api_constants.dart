@@ -7,4 +7,5 @@ class AppConstants {
   static const String resetPasswordApi = 'v1/auth/resetPassword';
   static const String verifyResetCodeApi = 'v1/auth/verifyResetCode';
   static const String editProfileApi = 'v1/auth/editProfile';
+  static const String getSubjectsApi = 'v1/subjects';
 }

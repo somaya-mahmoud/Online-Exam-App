@@ -18,7 +18,7 @@ class OnlineExamApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.examScreenRoute,
+        initialRoute: Routes.exploreSubjectsScreenRoute,
         theme: ThemeManager.mainTheme,
         onGenerateRoute: RouteGenerator.getRoute,
 

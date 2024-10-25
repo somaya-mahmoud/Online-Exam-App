@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:online_exam_app/data/api/requests.dart';
 import 'package:online_exam_app/data/api/api_constants.dart';
+import 'package:online_exam_app/data/models/exam_response/SubjectsResponse.dart';
 import 'package:online_exam_app/data/models/password_response/ForgotPasswordResponse.dart';
 import 'package:online_exam_app/data/models/password_response/ResetPasswordResponse.dart';
 import 'package:online_exam_app/data/models/password_response/VerifyResetCodeResponse.dart';
@@ -65,5 +66,11 @@ class ApiManager {
       'phone': phone,
     });
     return EditProfileResponse.fromJson(response.data);
+  }
+  Future<Subjects> getSubjects(String token)async{
+    var response = await _dio.get(AppConstants.getSubjectsApi,data: {
+      'token' : token,
+    });
+    return Subjects.fromJson(response.data);
   }
 }
