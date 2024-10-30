@@ -31,6 +31,10 @@ class AppStrings {
 //dialogTimeOut
   static const timeOut = "Time out !!";
   static const viewScore = "View score";
+//#########################################################
+//exams screen
+  static const languageTitle = "Languages";
+  static const highLevel = "Languages";
 
   //#########################################################
   // exam screen

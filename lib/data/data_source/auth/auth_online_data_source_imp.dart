@@ -24,7 +24,8 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
   }
 
   @override
-  Future<ApiResult<VerifyResetCodeResponse>>? verifyResetCode(String resetCode) {
+  Future<ApiResult<VerifyResetCodeResponse>>? verifyResetCode(
+      String resetCode) {
     return executeApi<VerifyResetCodeResponse>(() async {
       return await apiManager.verifyResetCode(resetCode);
     });
@@ -39,13 +40,12 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
   }
 
   @override
-  Future<ApiResult<AuthResponse>> registerUser({required UserRequest userRequest}) {
+  Future<ApiResult<AuthResponse>> registerUser(
+      {required UserRequest userRequest}) {
     return executeApi<AuthResponse>(() async {
       return await apiManager.registerUser(userRequest: userRequest);
     });
   }
-
-
 
   @override
   Future<ApiResult<EditProfileResponse>>? editProfile(

@@ -10,9 +10,7 @@ class LoginViewModel extends BaseCubit implements LoginViewModelInput, LoginView
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _rememberMe = false;
-
   LoginViewModel() ;
-
   @override
   void start() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -27,7 +25,6 @@ class LoginViewModel extends BaseCubit implements LoginViewModelInput, LoginView
   @override
   Future<void> login() async {
     emit(LoadingState());
-
     if (_rememberMe) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool('rememberMe', true);

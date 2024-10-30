@@ -1,3 +1,5 @@
+import 'package:online_exam_app/data/response/response.dart';
+
 enum DisplayType { fullScreen, popUpDialog }
 
 abstract class BaseState {
@@ -12,6 +14,7 @@ class LoadingState extends BaseState {
 class SuccessState extends BaseState {
   final String message;
   SuccessState(this.message);
+
 }
 class ErrorState extends BaseState {
   final String errorMessage;

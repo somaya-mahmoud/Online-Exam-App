@@ -1,4 +1,4 @@
-class UserRequest{
+class UserRequest {
   String username;
 
   String firstName;
@@ -20,6 +20,6 @@ class UserRequest{
     required this.email,
     required this.password,
     required this.rePassword,
-    required this.phone ,
+    required this.phone,
   });
 }

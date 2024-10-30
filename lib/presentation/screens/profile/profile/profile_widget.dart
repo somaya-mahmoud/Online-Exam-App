@@ -53,7 +53,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               ),
               SizedBox(width: 10.sp),
               Text(
-                'Reset password',
+                'Edit profile',
                 style: TextStyle(
                   color: ColorsManager.blackBase,
                   fontSize: 18.sp,

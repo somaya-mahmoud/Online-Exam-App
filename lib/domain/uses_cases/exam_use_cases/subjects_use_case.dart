@@ -1,17 +1,14 @@
-
-  import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/data/contracts/exam/exam_online_data_source.dart';
-import 'package:online_exam_app/data/models/exam_response/SubjectsResponse.dart';
+import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/domain/common/ApiResult.dart';
+import 'package:online_exam_app/domain/entities/exams_entity.dart';
+import 'package:online_exam_app/domain/entities/subjects.dart';
 import 'package:online_exam_app/domain/repository/exam/subjects_repo.dart';
 
 @injectable
-  class GetSubjectsUseCase{
+class GetSubjectsUseCase {
   SubjectsRepo subjectsRepo;
   GetSubjectsUseCase(this.subjectsRepo);
-
-  Future<ApiResult<List<Subjects>>>? invoke(String token){
-    return subjectsRepo.getSubjects(token);
+  Future<ApiResult<List<Subject>>> call()  {
+    return  subjectsRepo.getSubjects();
   }
-
-  }
+}

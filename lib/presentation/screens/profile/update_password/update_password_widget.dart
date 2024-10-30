@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam_app/presentation/common/widgets/default_elevated_button.dart';
 import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
+import 'package:online_exam_app/presentation/common/widgets/show_loading_dialog.dart';
 import 'package:online_exam_app/presentation/resources/color_manager.dart';
 
 class UpdatePasswordWidget extends StatelessWidget {
@@ -55,7 +56,7 @@ class UpdatePasswordWidget extends StatelessWidget {
               Container(
                 margin: EdgeInsets.all(10.sp),
                 child: DefaultTextFormField(
-                    controller: currentPasswordController,
+                    controller: newPasswordController,
                     label: 'New Password',
                     hintText: 'New Password',
                     keyBoard: TextInputType.visiblePassword,
@@ -68,7 +69,7 @@ class UpdatePasswordWidget extends StatelessWidget {
               Container(
                 margin: EdgeInsets.all(10.sp),
                 child: DefaultTextFormField(
-                    controller: currentPasswordController,
+                    controller: confirmPasswordController,
                     label: 'Confirm Password',
                     hintText: 'Confirm Password',
                     keyBoard: TextInputType.visiblePassword,
@@ -87,10 +88,11 @@ class UpdatePasswordWidget extends StatelessWidget {
                 margin: EdgeInsets.only(left: 10.w, right: 10.w),
                 child: DefaultElevatedButton(
                     onPressed: () {
-                      if (formKey.currentState!.validate()) {}
+                      if (formKey.currentState!.validate()) {
+                      }
                     },
                     label: 'Update',
-                    isValidate: false),
+                    isValidate: true),
               ),
             ],
           )),

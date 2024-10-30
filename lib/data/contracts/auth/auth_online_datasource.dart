@@ -8,7 +8,8 @@ import 'package:online_exam_app/domain/common/ApiResult.dart';
 
 abstract class AuthOnlineDataSource {
   Future<ApiResult<ForgotPasswordResponse>>? forgetPassword(String email) {}
-  Future<ApiResult<VerifyResetCodeResponse>>? verifyResetCode(String resetCode) {}
+  Future<ApiResult<VerifyResetCodeResponse>>? verifyResetCode(
+      String resetCode) {}
   Future<ApiResult<ResetPasswordResponse>>? resetPassword(
       String email, String newPassword) {}
   Future<ApiResult<EditProfileResponse>>? editProfile(
@@ -19,5 +20,6 @@ abstract class AuthOnlineDataSource {
       String password,
       String phone) {}
 
-  Future<ApiResult<AuthResponse>> registerUser({required UserRequest userRequest});
+  Future<ApiResult<AuthResponse>> registerUser(
+      {required UserRequest userRequest});
 }

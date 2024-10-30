@@ -6,6 +6,6 @@ class Success<T> implements ApiResult<T> {
 }
 
 class Fail<T> implements ApiResult<T> {
-  final dynamic errorData;
+  final Exception errorData;
   Fail(this.errorData);
 }

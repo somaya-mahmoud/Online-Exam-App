@@ -1,8 +1,8 @@
-
-
- import 'package:online_exam_app/data/models/exam_response/SubjectsResponse.dart';
 import 'package:online_exam_app/domain/common/ApiResult.dart';
+import 'package:online_exam_app/domain/entities/exams_entity.dart';
+import 'package:online_exam_app/domain/entities/subjects.dart';
 
 abstract class ExamOnlineOnlineSource {
-  Future<ApiResult<Subjects>>? getSubjects(String token){}
- }
+  Future<ApiResult<List<Subject>>> getSubjects();
+  Future<ApiResult<List<ExamsEntity>>> getExams();
+}

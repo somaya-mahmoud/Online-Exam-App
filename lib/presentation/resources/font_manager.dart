@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:online_exam_app/presentation/resources/color_manager.dart';
 
 import 'language_manager.dart';
 
@@ -55,10 +57,10 @@ class FontManager {
         fontWeight: fontWeight,
       );
     } else {
-      return GoogleFonts.notoSansArabic(
-        color: color,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
+      return TextStyle(
+        color: ColorsManager.blueBase,
+        fontWeight: FontWeight.w500,
+        fontSize: 18.sp,
       );
     }
   }

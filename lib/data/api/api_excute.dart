@@ -1,8 +1,5 @@
 import 'dart:async';
-import 'dart:io';
-import 'package:dio/dio.dart';
 import 'package:online_exam_app/domain/common/ApiResult.dart';
-import 'package:online_exam_app/domain/common/CustomExceptions.dart';
 
 Future<ApiResult<T>> executeApi<T>(Future<T> Function() apiCall) async {
   try {
@@ -12,4 +9,3 @@ Future<ApiResult<T>> executeApi<T>(Future<T> Function() apiCall) async {
     return Fail(e);
   }
 }
-

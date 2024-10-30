@@ -9,8 +9,11 @@ import 'package:online_exam_app/presentation/base/cubit_builder.dart';
 import 'package:online_exam_app/presentation/common/validator/validator.dart';
 import 'package:online_exam_app/presentation/common/widgets/default_elevated_button.dart';
 import 'package:online_exam_app/presentation/common/widgets/default_text_form_field.dart';
+import 'package:online_exam_app/presentation/common/widgets/error_dialog.dart';
 import 'package:online_exam_app/presentation/common/widgets/main_app_bar.dart';
+import 'package:online_exam_app/presentation/common/widgets/show_loading_dialog.dart';
 import 'package:online_exam_app/presentation/resources/color_manager.dart';
+import 'package:online_exam_app/presentation/resources/routes_manger.dart';
 import 'package:online_exam_app/presentation/resources/string_manger.dart';
 import 'package:online_exam_app/presentation/resources/text_style.dart';
 import 'package:online_exam_app/presentation/resources/values_manager.dart';
@@ -34,8 +37,14 @@ class LoginViewScreen extends StatelessWidget {
         create: (context) => viewModel..start(),
         child: BlocConsumer<LoginViewModel, BaseState>(
           listener: (context, state) {
-            if (state is SuccessState) {
+            if(state is LoadingState){
+              showLoadingDialog(context);
+            }
+            else if (state is SuccessState) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
+              Navigator.pushNamed(context, Routes.homeScreenRoute);
+            }else if(state is ErrorState){
+              showErrorDialog(context, 'Something went wrong');
             }
           },
           builder: (context, state) {
@@ -110,7 +119,7 @@ class LoginViewScreen extends StatelessWidget {
                 width: context.width() * .88,
                 height: AppSize.s50,
                 child: DefaultElevatedButton(
-                  onPressed: () {
+                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       viewModel.login();
                     }

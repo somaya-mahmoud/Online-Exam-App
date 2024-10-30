@@ -2,9 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:online_exam_app/presentation/resources/string_manger.dart';
 import 'package:online_exam_app/presentation/screens/Exam/exam/exam_screen.dart';
+import 'package:online_exam_app/presentation/screens/Exam/exams/exams_screen.dart';
 import 'package:online_exam_app/presentation/screens/Exam/explore/explore_subjects_screen.dart';
 import 'package:online_exam_app/presentation/screens/Exam/score_screen/score_screen.dart';
 import 'package:online_exam_app/presentation/screens/Exam/start_exam/start_exam_screen.dart';
+import 'package:online_exam_app/presentation/screens/home_screen/view.dart';
 import 'package:online_exam_app/presentation/screens/login/view/login_view.dart';
 import 'package:online_exam_app/presentation/screens/password/forget_password/forget_password_screen.dart';
 import 'package:online_exam_app/presentation/screens/password/reset_password/reset_password_screen.dart';
@@ -29,6 +31,8 @@ class Routes {
   static const String startExamScreenRoute = "/startExamScreen";
   static const String scoreScreenRoute = "/scoreScreen";
   static const String examScreenRoute = "/examScreen";
+  static const String homeScreenRoute = "/homeScreen";
+  static const String examsScreenRoute = "/examsScreen";
 }
 
 class RouteGenerator {
@@ -50,14 +54,20 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const UpdatePasswordScreen());
          case Routes.profileScreenRoute:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
-      case Routes.examScreenRoute:
-        return MaterialPageRoute(builder: (_) => const ExamScreen());
       case Routes.exploreSubjectsScreenRoute:
         return MaterialPageRoute(builder: (_) => const ExploreSubjectsScreen());
+      case Routes.examScreenRoute:
+        return MaterialPageRoute(builder: (_) => const ExamScreen());
       case Routes.scoreScreenRoute:
         return MaterialPageRoute(builder: (_) => const ScoreScreen());
       case Routes.startExamScreenRoute:
         return MaterialPageRoute(builder: (_) => const StartExamScreen());
+
+      case Routes.homeScreenRoute:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+
+      case Routes.examsScreenRoute:
+        return MaterialPageRoute(builder: (_) => const ExamsScreen());
 
       default:
         return unDefinedRoute();

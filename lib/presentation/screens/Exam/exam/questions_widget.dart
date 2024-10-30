@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
-import 'package:online_exam_app/presentation/common/widgets/default_elevated_button.dart';
 import 'package:online_exam_app/presentation/common/widgets/main_app_bar.dart';
 import 'package:online_exam_app/presentation/resources/color_manager.dart';
 import 'package:online_exam_app/presentation/resources/string_manger.dart';

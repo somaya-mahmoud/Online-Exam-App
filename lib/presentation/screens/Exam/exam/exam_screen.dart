@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/presentation/screens/Exam/exam/exam_widget.dart';
+import 'package:online_exam_app/presentation/screens/Exam/exam/questions_widget.dart';
 
 class ExamScreen extends StatelessWidget {
   const ExamScreen({super.key});

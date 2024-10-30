@@ -4,17 +4,19 @@
 
 class SubjectsResponse {
   SubjectsResponse({
-      String? message, 
-      Metadata? metadata, 
-      List<Subjects>? subjects,}){
+    String? message,
+    Metadata? metadata,
+    List<Subjects>? subjects,
+  }) {
     _message = message;
     _metadata = metadata;
     _subjects = subjects;
-}
+  }
 
   SubjectsResponse.fromJson(dynamic json) {
     _message = json['message'];
-    _metadata = json['metadata'] != null ? Metadata.fromJson(json['metadata']) : null;
+    _metadata =
+        json['metadata'] != null ? Metadata.fromJson(json['metadata']) : null;
     if (json['subjects'] != null) {
       _subjects = [];
       json['subjects'].forEach((v) {
@@ -25,13 +27,16 @@ class SubjectsResponse {
   String? _message;
   Metadata? _metadata;
   List<Subjects>? _subjects;
-SubjectsResponse copyWith({  String? message,
-  Metadata? metadata,
-  List<Subjects>? subjects,
-}) => SubjectsResponse(  message: message ?? _message,
-  metadata: metadata ?? _metadata,
-  subjects: subjects ?? _subjects,
-);
+  SubjectsResponse copyWith({
+    String? message,
+    Metadata? metadata,
+    List<Subjects>? subjects,
+  }) =>
+      SubjectsResponse(
+        message: message ?? _message,
+        metadata: metadata ?? _metadata,
+        subjects: subjects ?? _subjects,
+      );
   String? get message => _message;
   Metadata? get metadata => _metadata;
   List<Subjects>? get subjects => _subjects;
@@ -47,7 +52,6 @@ SubjectsResponse copyWith({  String? message,
     }
     return map;
   }
-
 }
 
 /// _id : "670037f6728c92b7fdf434fc"
@@ -57,15 +61,16 @@ SubjectsResponse copyWith({  String? message,
 
 class Subjects {
   Subjects({
-      String? id, 
-      String? name, 
-      String? icon, 
-      String? createdAt,}){
+    String? id,
+    String? name,
+    String? icon,
+    String? createdAt,
+  }) {
     _id = id;
     _name = name;
     _icon = icon;
     _createdAt = createdAt;
-}
+  }
 
   Subjects.fromJson(dynamic json) {
     _id = json['_id'];
@@ -77,15 +82,18 @@ class Subjects {
   String? _name;
   String? _icon;
   String? _createdAt;
-Subjects copyWith({  String? id,
-  String? name,
-  String? icon,
-  String? createdAt,
-}) => Subjects(  id: id ?? _id,
-  name: name ?? _name,
-  icon: icon ?? _icon,
-  createdAt: createdAt ?? _createdAt,
-);
+  Subjects copyWith({
+    String? id,
+    String? name,
+    String? icon,
+    String? createdAt,
+  }) =>
+      Subjects(
+        id: id ?? _id,
+        name: name ?? _name,
+        icon: icon ?? _icon,
+        createdAt: createdAt ?? _createdAt,
+      );
   String? get id => _id;
   String? get name => _name;
   String? get icon => _icon;
@@ -99,7 +107,6 @@ Subjects copyWith({  String? id,
     map['createdAt'] = _createdAt;
     return map;
   }
-
 }
 
 /// currentPage : 1
@@ -108,13 +115,14 @@ Subjects copyWith({  String? id,
 
 class Metadata {
   Metadata({
-      num? currentPage, 
-      num? numberOfPages, 
-      num? limit,}){
+    num? currentPage,
+    num? numberOfPages,
+    num? limit,
+  }) {
     _currentPage = currentPage;
     _numberOfPages = numberOfPages;
     _limit = limit;
-}
+  }
 
   Metadata.fromJson(dynamic json) {
     _currentPage = json['currentPage'];
@@ -124,13 +132,16 @@ class Metadata {
   num? _currentPage;
   num? _numberOfPages;
   num? _limit;
-Metadata copyWith({  num? currentPage,
-  num? numberOfPages,
-  num? limit,
-}) => Metadata(  currentPage: currentPage ?? _currentPage,
-  numberOfPages: numberOfPages ?? _numberOfPages,
-  limit: limit ?? _limit,
-);
+  Metadata copyWith({
+    num? currentPage,
+    num? numberOfPages,
+    num? limit,
+  }) =>
+      Metadata(
+        currentPage: currentPage ?? _currentPage,
+        numberOfPages: numberOfPages ?? _numberOfPages,
+        limit: limit ?? _limit,
+      );
   num? get currentPage => _currentPage;
   num? get numberOfPages => _numberOfPages;
   num? get limit => _limit;
@@ -142,5 +153,4 @@ Metadata copyWith({  num? currentPage,
     map['limit'] = _limit;
     return map;
   }
-
 }
